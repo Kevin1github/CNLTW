@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\ConferenceDelegateManagement1234122.props" />
+</Project>

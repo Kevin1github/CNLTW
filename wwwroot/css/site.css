@@ -1,0 +1,173 @@
+/* Global Styles */
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #f8f9fa;
+}
+
+/* Navbar Styles */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: 600;
+}
+
+/* Card Styles */
+.card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 0.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.card-header {
+    font-weight: 500;
+}
+
+/* Table Styles */
+.table {
+    margin-bottom: 0;
+}
+
+    .table th {
+        font-weight: 600;
+        background-color: rgba(0, 0, 0, 0.02);
+    }
+
+/* Button Styles */
+.btn {
+    font-weight: 500;
+}
+
+.btn-group-sm > .btn {
+    padding: 0.25rem 0.5rem;
+}
+
+/* Form Styles */
+.form-label {
+    font-weight: 500;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Badge Styles */
+.badge {
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+}
+
+/* Footer Styles */
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+}
+
+/* List Group Styles */
+.list-group-item {
+    border-left: none;
+    border-right: none;
+}
+
+    .list-group-item:first-child {
+        border-top: none;
+    }
+
+    .list-group-item:last-child {
+        border-bottom: none;
+    }
+
+/* Pagination Styles */
+.pagination {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Dashboard Card Styles */
+.card-body i.display-4 {
+    color: #007bff;
+}
+
+/* Alert Styles */
+.alert {
+    border-radius: 0.25rem;
+}
+
+/* Table Responsive Wrapper */
+.table-responsive {
+    margin-bottom: 1rem;
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+
+/* Validation Styles */
+.text-danger {
+    font-size: 0.875rem;
+}
+
+/* Custom utility classes */
+.fw-bold {
+    font-weight: 500;
+}
+
+/* Progress bar styles */
+.progress {
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Icons in buttons */
+.btn i {
+    margin-right: 0.25rem;
+}
+
+/* Hover effects */
+.card.shadow-sm:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    transition: box-shadow 0.3s ease;
+}
+
+/* Session list styling */
+.session-checkbox:checked + label {
+    font-weight: bold;
+}
+
+/* Print styles for registration confirmation */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+
+    body {
+        background-color: white;
+    }
+
+    .card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+    }
+}

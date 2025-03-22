@@ -1,0 +1,52 @@
+﻿@using ConferenceDelegateManagement1234122.Models
+@model Conference
+
+@{
+    ViewData["Title"] = "Delete Conference";
+}
+
+<h1>Delete Conference</h1>
+
+<div class="alert alert-danger mb-4">
+    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+    <strong>Warning:</strong> Are you sure you want to delete this conference? This will permanently remove the conference
+    and all associated sessions and registrations. This action cannot be undone.
+</div>
+
+<div class="card mb-4">
+    <div class="card-header bg-danger text-white">
+        <h5 class="mb-0">Conference Details</h5>
+    </div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-md-3 fw-bold">Name:</div>
+            <div class="col-md-9">@Model.Name</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3 fw-bold">Dates:</div>
+            <div class="col-md-9">@Model.StartDate.ToString("MMMM d, yyyy") - @Model.EndDate.ToString("MMMM d, yyyy")</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3 fw-bold">Location:</div>
+            <div class="col-md-9">@Model.Location</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3 fw-bold">Sessions:</div>
+            <div class="col-md-9">@Model.Sessions.Count</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3 fw-bold">Registrations:</div>
+            <div class="col-md-9">@Model.Registrations.Count</div>
+        </div>
+    </div>
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-danger">
+            <i class="bi bi-trash"></i> Delete
+        </button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+    </div>
+</form>

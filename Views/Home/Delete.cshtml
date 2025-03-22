@@ -1,0 +1,16 @@
+﻿@model ConferenceDelegateManagement1234122.Models.ConferenceDelegate
+
+@{
+    ViewData["Title"] = "Xóa Đại Biểu";
+}
+
+<h2>Bạn có chắc muốn xóa đại biểu này?</h2>
+<p><strong>Họ và Tên:</strong> @Model.FullName</p>
+<p><strong>Số Điện Thoại:</strong> @Model.PhoneNumber</p>
+<p><strong>CCCD:</strong> @Model.CCCD</p>
+
+<form asp-action="DeleteConfirmed">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+</form>

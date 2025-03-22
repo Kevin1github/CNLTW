@@ -1,0 +1,70 @@
+﻿@using ConferenceDelegateManagement1234122.Models
+@model Registration
+
+@{
+    ViewData["Title"] = "Delete Registration";
+}
+
+<h1>Delete Registration</h1>
+
+<div class="alert alert-danger mb-4">
+    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+    <strong>Warning:</strong> Are you sure you want to delete this registration? This will permanently remove the registration
+    record and all associated session selections. This action cannot be undone.
+</div>
+
+<div class="card mb-4">
+    <div class="card-header bg-danger text-white">
+        <h5 class="mb-0">Registration Details</h5>
+    </div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-md-3 fw-bold">Registration Code:</div>
+            <div class="col-md-9">@Model.RegistrationCode</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3 fw-bold">Delegate:</div>
+            <div class="col-md-9">@Model.Delegate?.FullName</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3 fw-bold">Conference:</div>
+            <div class="col-md-9">@Model.Conference?.Name</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3 fw-bold">Registration Date:</div>
+            <div class="col-md-9">@Model.RegistrationDate.ToString("MMMM d, yyyy")</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3 fw-bold">Payment Status:</div>
+            <div class="col-md-9">
+                <span class="badge @(Model.PaymentStatus == PaymentStatus.Paid ? "bg-success" :
+                                   Model.PaymentStatus == PaymentStatus.Pending ? "bg-warning" : "bg-secondary")">
+                    @Model.PaymentStatus
+                </span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3 fw-bold">Sessions:</div>
+            <div class="col-md-9">
+                @if (Model.Sessions != null && Model.Sessions.Any())
+                {
+                    <span>@Model.Sessions.Count sessions will be unregistered</span>
+                }
+                else
+                {
+                    <span>No sessions registered</span>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-danger">
+            <i class="bi bi-trash"></i> Delete
+        </button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+    </div>
+</form>

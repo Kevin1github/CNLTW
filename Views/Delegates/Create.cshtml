@@ -1,0 +1,109 @@
+﻿@using ConferenceDelegateManagement1234122.Models
+@model Delegate1
+
+@{
+    ViewData["Title"] = "Create Delegate";
+}
+
+<h1>Create Delegate</h1>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label asp-for="FirstName" class="form-label"></label>
+                            <input asp-for="FirstName" class="form-control" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="LastName" class="form-label"></label>
+                            <input asp-for="LastName" class="form-control" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" type="email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Phone" class="form-label"></label>
+                        <input asp-for="Phone" class="form-control" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Organization" class="form-label"></label>
+                        <input asp-for="Organization" class="form-control" />
+                        <span asp-validation-for="Organization" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="JobTitle" class="form-label"></label>
+                        <input asp-for="JobTitle" class="form-control" />
+                        <span asp-validation-for="JobTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Country" class="form-label"></label>
+                        <input asp-for="Country" class="form-control" />
+                        <span asp-validation-for="Country" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="DietaryRequirements" class="form-label"></label>
+                        <textarea asp-for="DietaryRequirements" class="form-control" rows="2"></textarea>
+                        <span asp-validation-for="DietaryRequirements" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="SpecialRequirements" class="form-label"></label>
+                        <textarea asp-for="SpecialRequirements" class="form-control" rows="2"></textarea>
+                        <span asp-validation-for="SpecialRequirements" class="text-danger"></span>
+                    </div>
+
+                    <div class="mt-4">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                        <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Delegate Information</h5>
+            </div>
+            <div class="card-body">
+                <p>Create a new delegate record with all necessary information. Required fields are marked.</p>
+
+                <hr>
+
+                <h6>Tips:</h6>
+                <ul>
+                    <li>Email address must be unique in the system</li>
+                    <li>Phone number should include country code if international</li>
+                    <li>Special requirements help us accommodate delegate needs</li>
+                    <li>After creating a delegate, you can register them for conferences</li>
+                </ul>
+
+                <hr>
+
+                <p>After creating the delegate record, you'll be able to register them for conferences and manage their sessions.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

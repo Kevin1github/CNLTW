@@ -1,0 +1,66 @@
+﻿@using ConferenceDelegateManagement1234122.Models
+@model Session
+
+@{
+    ViewData["Title"] = "Delete Session";
+}
+
+<h1>Delete Session</h1>
+
+<div class="alert alert-danger mb-4">
+    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+    <strong>Warning:</strong> Are you sure you want to delete this session? This will remove the session
+    from all delegate registrations. This action cannot be undone.
+</div>
+
+<div class="card mb-4">
+    <div class="card-header bg-danger text-white">
+        <h5 class="mb-0">Session Details</h5>
+    </div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-md-3 fw-bold">Title:</div>
+            <div class="col-md-9">@Model.Title</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3 fw-bold">Conference:</div>
+            <div class="col-md-9">@Model.Conference?.Name</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3 fw-bold">Date & Time:</div>
+            <div class="col-md-9">
+                @Model.StartTime.ToString("MMMM d, yyyy h:mm tt") - @Model.EndTime.ToString("h:mm tt")
+            </div>
+        </div>
+        @if (!string.IsNullOrEmpty(Model.Speaker))
+        {
+            <div class="row mb-3">
+                <div class="col-md-3 fw-bold">Speaker:</div>
+                <div class="col-md-9">@Model.Speaker</div>
+            </div>
+        }
+        <div class="row mb-3">
+            <div class="col-md-3 fw-bold">Registered Delegates:</div>
+            <div class="col-md-9">
+                @if (Model.Registrations != null && Model.Registrations.Any())
+                {
+                    <span class="text-danger">@Model.Registrations.Count delegates are registered for this session</span>
+                }
+                else
+                {
+                    <span>No delegates registered for this session</span>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-danger">
+            <i class="bi bi-trash"></i> Delete
+        </button>
+        <a asp-action="Index" asp-route-conferenceId="@Model.ConferenceId" class="btn btn-outline-secondary">Cancel</a>
+    </div>
+</form>

@@ -1,0 +1,154 @@
+﻿@using ConferenceDelegateManagement1234122.Models
+@model Registration
+
+@{
+    ViewData["Title"] = "Create Registration";
+    var availableSessions = ViewData["AvailableSessions"] as List<Session>;
+}
+
+<h1>Create Registration</h1>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="Create" method="post">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="DelegateId" class="form-label">Delegate</label>
+                        <select asp-for="DelegateId" asp-items="ViewBag.DelegateId" class="form-select">
+                            <option value="">-- Select Delegate --</option>
+                        </select>
+                        <span asp-validation-for="DelegateId" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="ConferenceId" class="form-label">Conference</label>
+                        <select asp-for="ConferenceId" asp-items="ViewBag.ConferenceId" class="form-select" id="conferenceSelect">
+                            <option value="">-- Select Conference --</option>
+                        </select>
+                        <span asp-validation-for="ConferenceId" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="RegistrationDate" class="form-label"></label>
+                        <input asp-for="RegistrationDate" class="form-control" type="date" />
+                        <span asp-validation-for="RegistrationDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="PaymentStatus" class="form-label"></label>
+                        <select asp-for="PaymentStatus" class="form-select" asp-items="Html.GetEnumSelectList<PaymentStatus>()"></select>
+                        <span asp-validation-for="PaymentStatus" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input asp-for="AttendanceConfirmed" class="form-check-input" />
+                        <label asp-for="AttendanceConfirmed" class="form-check-label"></label>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Notes" class="form-label"></label>
+                        <textarea asp-for="Notes" class="form-control" rows="3"></textarea>
+                        <span asp-validation-for="Notes" class="text-danger"></span>
+                    </div>
+
+                    @if (availableSessions != null && availableSessions.Any())
+                    {
+                        <div class="card mb-3">
+                            <div class="card-header bg-info text-white">
+                                <h5 class="mb-0">Select Sessions</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input type="checkbox" id="selectAllSessions" class="form-check-input" />
+                                        <label for="selectAllSessions" class="form-check-label">Select All Sessions</label>
+                                    </div>
+                                </div>
+
+                                <div class="list-group">
+                                    @foreach (var session in availableSessions.OrderBy(s => s.StartTime))
+                                    {
+                                        <div class="list-group-item">
+                                            <div class="form-check">
+                                                <input type="checkbox" name="selectedSessions" value="@session.Id" class="form-check-input session-checkbox" id="session_@session.Id" />
+                                                <label for="session_@session.Id" class="form-check-label">
+                                                    <strong>@session.Title</strong><br />
+                                                    <small>
+                                                        @session.StartTime.ToString("MMM d, h:mm tt") - @session.EndTime.ToString("h:mm tt")
+                                                        @if (!string.IsNullOrEmpty(session.Room))
+                                                        {
+                                                            <span>| Room: @session.Room</span>
+                                                        }
+                                                        @if (!string.IsNullOrEmpty(session.Speaker))
+                                                        {
+                                                            <span>| Speaker: @session.Speaker</span>
+                                                        }
+                                                    </small>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="mt-4">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                        <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Registration Information</h5>
+            </div>
+            <div class="card-body">
+                <p>Register a delegate for a conference. Required fields are marked.</p>
+
+                <hr>
+
+                <h6>Tips:</h6>
+                <ul>
+                    <li>Select the delegate and conference</li>
+                    <li>Registration date defaults to today</li>
+                    <li>You can select optional sessions the delegate wishes to attend</li>
+                    <li>Payment status can be updated later</li>
+                </ul>
+
+                <hr>
+
+                <p>After creating the registration, you can manage session selections and update payment status.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function() {
+            // Handle select all sessions checkbox
+            $("#selectAllSessions").change(function() {
+                $(".session-checkbox").prop('checked', $(this).prop('checked'));
+            });
+
+            // Update conference dropdown to reload the page with selected conference
+            $("#conferenceSelect").change(function() {
+                var conferenceId = $(this).val();
+                var delegateId = $("#DelegateId").val();
+                if (conferenceId) {
+                    window.location = '@Url.Action("Create")' + '?conferenceId=' + conferenceId +
+                                      (delegateId ? '&delegateId=' + delegateId : '');
+                }
+            });
+        });
+    </script>
+}

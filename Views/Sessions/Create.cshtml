@@ -1,0 +1,113 @@
+﻿@using ConferenceDelegateManagement1234122.Models
+@model Session
+
+@{
+    ViewData["Title"] = "Create Session";
+}
+
+<h1>Create Session</h1>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="Title" class="form-label"></label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Description" class="form-label"></label>
+                        <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label asp-for="StartTime" class="form-label"></label>
+                            <input asp-for="StartTime" class="form-control" type="datetime-local" />
+                            <span asp-validation-for="StartTime" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="EndTime" class="form-label"></label>
+                            <input asp-for="EndTime" class="form-control" type="datetime-local" />
+                            <span asp-validation-for="EndTime" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label asp-for="Speaker" class="form-label"></label>
+                            <input asp-for="Speaker" class="form-control" />
+                            <span asp-validation-for="Speaker" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="Room" class="form-label"></label>
+                            <input asp-for="Room" class="form-control" />
+                            <span asp-validation-for="Room" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label asp-for="MaximumAttendees" class="form-label"></label>
+                            <input asp-for="MaximumAttendees" class="form-control" />
+                            <span asp-validation-for="MaximumAttendees" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="Track" class="form-label"></label>
+                            <input asp-for="Track" class="form-control" />
+                            <span asp-validation-for="Track" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="ConferenceId" class="form-label">Conference</label>
+                        <select asp-for="ConferenceId" asp-items="ViewBag.ConferenceId" class="form-select">
+                            <option value="">-- Select Conference --</option>
+                        </select>
+                        <span asp-validation-for="ConferenceId" class="text-danger"></span>
+                    </div>
+
+                    <div class="mt-4">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                        <a asp-action="Index" asp-route-conferenceId="@Model?.ConferenceId" class="btn btn-outline-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Session Information</h5>
+            </div>
+            <div class="card-body">
+                <p>Create a new session for the selected conference. Required fields are marked.</p>
+
+                <hr>
+
+                <h6>Tips:</h6>
+                <ul>
+                    <li>Session times must be within conference dates</li>
+                    <li>End time must be after start time</li>
+                    <li>Maximum attendees can be left empty for unlimited attendance</li>
+                    <li>Use Track field to categorize sessions (e.g., "Technical", "Business")</li>
+                </ul>
+
+                <hr>
+
+                <p>After creating the session, you can add it to delegate registrations.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

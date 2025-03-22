@@ -1,0 +1,127 @@
+﻿@using ConferenceDelegateManagement1234122.Models
+@model Conference
+
+@{
+    ViewData["Title"] = "Edit Conference";
+}
+
+<h1>Edit Conference</h1>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                    <input type="hidden" asp-for="Id" />
+
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Description" class="form-label"></label>
+                        <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label asp-for="StartDate" class="form-label"></label>
+                            <input asp-for="StartDate" class="form-control" type="date" />
+                            <span asp-validation-for="StartDate" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="EndDate" class="form-label"></label>
+                            <input asp-for="EndDate" class="form-control" type="date" />
+                            <span asp-validation-for="EndDate" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Location" class="form-label"></label>
+                        <input asp-for="Location" class="form-control" />
+                        <span asp-validation-for="Location" class="text-danger"></span>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label asp-for="MaximumDelegates" class="form-label"></label>
+                            <input asp-for="MaximumDelegates" class="form-control" />
+                            <span asp-validation-for="MaximumDelegates" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="RegistrationDeadline" class="form-label"></label>
+                            <input asp-for="RegistrationDeadline" class="form-control" type="date" />
+                            <span asp-validation-for="RegistrationDeadline" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label asp-for="OrganizerEmail" class="form-label"></label>
+                            <input asp-for="OrganizerEmail" class="form-control" type="email" />
+                            <span asp-validation-for="OrganizerEmail" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="OrganizerPhone" class="form-label"></label>
+                            <input asp-for="OrganizerPhone" class="form-control" />
+                            <span asp-validation-for="OrganizerPhone" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input asp-for="IsActive" class="form-check-input" />
+                        <label asp-for="IsActive" class="form-check-label"></label>
+                    </div>
+
+                    <div class="mt-4">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                        <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Edit Information</h5>
+            </div>
+            <div class="card-body">
+                <p>Update the conference details as needed. Required fields are marked.</p>
+
+                <hr>
+
+                <h6>Notes:</h6>
+                <ul>
+                    <li>Changing dates may affect existing session schedules</li>
+                    <li>If you reduce the maximum delegates below current registrations, no new registrations will be accepted</li>
+                    <li>Setting a conference to inactive will hide it from the main listings</li>
+                </ul>
+
+                <hr>
+
+                <div class="d-grid gap-2">
+                    <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-primary">
+                        <i class="bi bi-info-circle"></i> View Details
+                    </a>
+                    <a asp-controller="Sessions" asp-action="Index" asp-route-conferenceId="@Model.Id" class="btn btn-outline-info">
+                        <i class="bi bi-calendar-event"></i> View Sessions
+                    </a>
+                    <a asp-controller="Registrations" asp-action="Index" asp-route-conferenceId="@Model.Id" class="btn btn-outline-success">
+                        <i class="bi bi-people"></i> View Registrations
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

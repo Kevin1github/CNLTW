@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\ConferenceDelegateManagement1234122.props" />
+</Project>

@@ -1,0 +1,227 @@
+﻿@using ConferenceDelegateManagement1234122.Models
+@model Session
+
+@{
+    ViewData["Title"] = "Session Details";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>@Model.Title</h1>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-primary">
+            <i class="bi bi-pencil"></i> Edit
+        </a>
+        <a asp-action="Index" asp-route-conferenceId="@Model.ConferenceId" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> Back to List
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Session Information</h5>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-3 fw-bold">Conference:</div>
+                    <div class="col-md-9">
+                        <a asp-controller="Conferences" asp-action="Details" asp-route-id="@Model.ConferenceId">
+                            @Model.Conference?.Name
+                        </a>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-3 fw-bold">Description:</div>
+                    <div class="col-md-9">@Model.Description</div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-3 fw-bold">Date & Time:</div>
+                    <div class="col-md-9">
+                        @Model.StartTime.ToString("MMMM d, yyyy h:mm tt") - @Model.EndTime.ToString("h:mm tt")
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-3 fw-bold">Duration:</div>
+                    <div class="col-md-9">
+                        @{
+                            var duration = Model.EndTime - Model.StartTime;
+                            var hours = duration.Hours;
+                            var minutes = duration.Minutes;
+                            var durationText = "";
+
+                            if (hours > 0)
+                            {
+                                durationText += $"{hours} hour{(hours != 1 ? "s" : "")}";
+                            }
+
+                            if (minutes > 0)
+                            {
+                                if (!string.IsNullOrEmpty(durationText))
+                                {
+                                    durationText += " ";
+                                }
+                                durationText += $"{minutes} minute{(minutes != 1 ? "s" : "")}";
+                            }
+                        }
+                        @durationText
+                    </div>
+                </div>
+                @if (!string.IsNullOrEmpty(Model.Speaker))
+                {
+                    <div class="row mb-3">
+                        <div class="col-md-3 fw-bold">Speaker:</div>
+                        <div class="col-md-9">@Model.Speaker</div>
+                    </div>
+                }
+                @if (!string.IsNullOrEmpty(Model.Room))
+                {
+                    <div class="row mb-3">
+                        <div class="col-md-3 fw-bold">Room:</div>
+                        <div class="col-md-9">@Model.Room</div>
+                    </div>
+                }
+                @if (!string.IsNullOrEmpty(Model.Track))
+                {
+                    <div class="row mb-3">
+                        <div class="col-md-3 fw-bold">Track:</div>
+                        <div class="col-md-9">@Model.Track</div>
+                    </div>
+                }
+                <div class="row mb-3">
+                    <div class="col-md-3 fw-bold">Maximum Attendees:</div>
+                    <div class="col-md-9">
+                        @if (Model.MaximumAttendees.HasValue && Model.MaximumAttendees.Value > 0)
+                        {
+                            <span>@Model.MaximumAttendees</span>
+                        }
+                        else
+                        {
+                            <span>Unlimited</span>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Registered Delegates Section -->
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Registered Delegates</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.Registrations != null && Model.Registrations.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Organization</th>
+                                    <th>Email</th>
+                                    <th>Registration Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var registration in Model.Registrations)
+                                {
+                                    <tr>
+                                        <td>
+                                            <a asp-controller="Delegates" asp-action="Details" asp-route-id="@registration.Delegate?.Id">
+                                                @registration.Delegate?.FullName
+                                            </a>
+                                        </td>
+                                        <td>@registration.Delegate?.Organization</td>
+                                        <td>@registration.Delegate?.Email</td>
+                                        <td>
+                                            <span class="badge @(registration.PaymentStatus == PaymentStatus.Paid ? "bg-success" :
+                                                            registration.PaymentStatus == PaymentStatus.Pending ? "bg-warning" : "bg-secondary")">
+                                                @registration.PaymentStatus
+                                            </span>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    @if (Model.MaximumAttendees.HasValue && Model.MaximumAttendees.Value > 0)
+                    {
+                        <div class="mt-3">
+                            <div class="progress" style="height: 20px;">
+                                @{
+                                    var percentage = Math.Min(100, Model.Registrations.Count * 100 / Model.MaximumAttendees.Value);
+                                    var progressClass = percentage < 70 ? "bg-success" : percentage < 90 ? "bg-warning" : "bg-danger";
+                                }
+                                <div class="progress-bar @progressClass" role="progressbar" style="width: @percentage%;"
+                                     aria-valuenow="@Model.Registrations.Count" aria-valuemin="0" aria-valuemax="@Model.MaximumAttendees">
+                                    @Model.Registrations.Count / @Model.MaximumAttendees
+                                </div>
+                            </div>
+                            <div class="text-center mt-2 small">
+                                <span>@Model.Registrations.Count out of @Model.MaximumAttendees maximum attendees (@percentage%)</span>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="alert alert-info">
+                        No delegates have registered for this session yet.
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <!-- Actions Card -->
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Actions</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-primary">
+                        <i class="bi bi-pencil"></i> Edit Session
+                    </a>
+                    <a asp-controller="Conferences" asp-action="Details" asp-route-id="@Model.ConferenceId" class="btn btn-outline-info">
+                        <i class="bi bi-calendar-event"></i> View Conference
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger">
+                        <i class="bi bi-trash"></i> Delete Session
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Info Card -->
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Session Summary</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Total Registrations:</span>
+                    <span class="badge bg-primary">@Model.Registrations.Count</span>
+                </div>
+                @if (Model.MaximumAttendees.HasValue && Model.MaximumAttendees.Value > 0)
+                {
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Available Spots:</span>
+                        <span class="badge bg-success">@Math.Max(0, Model.MaximumAttendees.Value - Model.Registrations.Count)</span>
+                    </div>
+                }
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Created:</span>
+                    <span>@Model.CreatedAt.ToString("MMM d, yyyy")</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Last Updated:</span>
+                    <span>@Model.UpdatedAt.ToString("MMM d, yyyy")</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

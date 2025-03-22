@@ -1,0 +1,184 @@
+﻿@using ConferenceDelegateManagement1234122.Controllers
+@using ConferenceDelegateManagement1234122.Models
+@model PaginatedList<Session>
+@{
+    ViewData["Title"] = "Sessions";
+    var conferenceId = ViewData["ConferenceId"] as int?;
+    var conferenceName = ViewData["ConferenceName"] as string;
+    var searchString = ViewData["SearchString"] as string;
+    var track = ViewData["TrackFilter"] as string;
+    var tracks = ViewData["Tracks"] as List<string>;
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>
+        @if (!string.IsNullOrEmpty(conferenceName))
+        {
+            <span>Sessions - @conferenceName</span>
+        }
+        else
+        {
+            <span>All Sessions</span>
+        }
+    </h1>
+    <div>
+        <a asp-action="Create" asp-route-conferenceId="@conferenceId" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i> Create New
+        </a>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <form asp-action="Index" method="get" class="row g-3">
+            @if (conferenceId.HasValue)
+            {
+                <input type="hidden" name="conferenceId" value="@conferenceId" />
+            }
+
+            <div class="col-md-5">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="searchString" value="@searchString" placeholder="Search by title, description or speaker...">
+                    <button type="submit" class="btn btn-outline-primary">Search</button>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <select name="track" class="form-select" onchange="this.form.submit()">
+                    <option value="">All Tracks</option>
+                    @if (tracks != null)
+                    {
+                        foreach (var t in tracks)
+                        {
+                            <option value="@t" selected="@(t == track)">@t</option>
+                        }
+                    }
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <div class="d-flex justify-content-end">
+                    <a asp-action="Index" asp-route-conferenceId="@conferenceId" class="btn btn-outline-secondary">Clear</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        <i class="bi bi-info-circle-fill me-2"></i> No sessions found. Please add a new session or modify your search criteria.
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Date & Time</th>
+                    <th>Speaker</th>
+                    <th>Room</th>
+                    <th>Track</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>
+                            @item.StartTime.ToString("MMM d, h:mm tt") - @item.EndTime.ToString("h:mm tt")
+                        </td>
+                        <td>@item.Speaker</td>
+                        <td>@item.Room</td>
+                        <td>@item.Track</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info">
+                                    <i class="bi bi-info-circle"></i>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            @if (Model.HasPreviousPage)
+            {
+                <li class="page-item">
+                    <a asp-action="Index"
+                       asp-route-conferenceId="@conferenceId"
+                       asp-route-pageNumber="@(Model.PageIndex - 1)"
+                       asp-route-searchString="@searchString"
+                       asp-route-track="@track"
+                       class="page-link">
+                        Previous
+                    </a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item disabled">
+                    <span class="page-link">Previous</span>
+                </li>
+            }
+
+            @for (var i = 1; i <= Model.TotalPages; i++)
+            {
+                <li class="page-item @(i == Model.PageIndex ? "active" : "")">
+                    <a asp-action="Index"
+                       asp-route-conferenceId="@conferenceId"
+                       asp-route-pageNumber="@i"
+                       asp-route-searchString="@searchString"
+                       asp-route-track="@track"
+                       class="page-link">
+                        @i
+                    </a>
+                </li>
+            }
+
+            @if (Model.HasNextPage)
+            {
+                <li class="page-item">
+                    <a asp-action="Index"
+                       asp-route-conferenceId="@conferenceId"
+                       asp-route-pageNumber="@(Model.PageIndex + 1)"
+                       asp-route-searchString="@searchString"
+                       asp-route-track="@track"
+                       class="page-link">
+                        Next
+                    </a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item disabled">
+                    <span class="page-link">Next</span>
+                </li>
+            }
+        </ul>
+    </nav>
+}
+
+@if (conferenceId.HasValue)
+{
+    <div class="mt-4">
+        <a asp-controller="Conferences" asp-action="Details" asp-route-id="@conferenceId" class="btn btn-outline-primary">
+            <i class="bi bi-arrow-left"></i> Back to Conference
+        </a>
+    </div>
+}

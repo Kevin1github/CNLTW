@@ -1,0 +1,171 @@
+﻿@using ConferenceDelegateManagement1234122.Models
+@model Registration
+
+@{
+    ViewData["Title"] = "Edit Registration";
+    var availableSessions = ViewData["AvailableSessions"] as List<Session>;
+    var selectedSessions = ViewData["SelectedSessions"] as List<int>;
+}
+
+<h1>Edit Registration</h1>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="Edit" method="post">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="DelegateId" />
+                    <input type="hidden" asp-for="ConferenceId" />
+                    <input type="hidden" asp-for="RegistrationDate" />
+                    <input type="hidden" asp-for="RegistrationCode" />
+
+                    <div class="mb-3">
+                        <label class="form-label">Delegate</label>
+                        <input type="text" value="@Model.Delegate?.FullName" class="form-control" readonly />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Conference</label>
+                        <input type="text" value="@Model.Conference?.Name" class="form-control" readonly />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Registration Date</label>
+                        <input type="text" value="@Model.RegistrationDate.ToString("MMMM d, yyyy")" class="form-control" readonly />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Registration Code</label>
+                        <input type="text" value="@Model.RegistrationCode" class="form-control" readonly />
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="PaymentStatus" class="form-label"></label>
+                        <select asp-for="PaymentStatus" class="form-select" asp-items="ViewBag.PaymentStatusList"></select>
+                        <span asp-validation-for="PaymentStatus" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input asp-for="AttendanceConfirmed" class="form-check-input" />
+                        <label asp-for="AttendanceConfirmed" class="form-check-label"></label>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Notes" class="form-label"></label>
+                        <textarea asp-for="Notes" class="form-control" rows="3"></textarea>
+                        <span asp-validation-for="Notes" class="text-danger"></span>
+                    </div>
+
+                    @if (availableSessions != null && availableSessions.Any())
+                    {
+                        <div class="card mb-3">
+                            <div class="card-header bg-info text-white">
+                                <h5 class="mb-0">Select Sessions</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input type="checkbox" id="selectAllSessions" class="form-check-input" />
+                                        <label for="selectAllSessions" class="form-check-label">Select All Sessions</label>
+                                    </div>
+                                </div>
+
+                                <div class="list-group">
+                                    @foreach (var session in availableSessions.OrderBy(s => s.StartTime))
+                                    {
+                                        var isChecked = selectedSessions != null && selectedSessions.Contains(session.Id);
+                                        <div class="list-group-item">
+                                            <div class="form-check">
+                                                <input type="checkbox" name="selectedSessions" value="@session.Id"
+                                                       class="form-check-input session-checkbox" id="session_@session.Id"
+                                                @(isChecked ? "checked" : "") />
+                                                <label for="session_@session.Id" class="form-check-label">
+                                                    <strong>@session.Title</strong><br />
+                                                    <small>
+                                                        @session.StartTime.ToString("MMM d, h:mm tt") - @session.EndTime.ToString("h:mm tt")
+                                                        @if (!string.IsNullOrEmpty(session.Room))
+                                                        {
+                                                            <span>| Room: @session.Room</span>
+                                                        }
+                                                        @if (!string.IsNullOrEmpty(session.Speaker))
+                                                        {
+                                                            <span>| Speaker: @session.Speaker</span>
+                                                        }
+                                                    </small>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="mt-4">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                        <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Edit Registration</h5>
+            </div>
+            <div class="card-body">
+                <p>Update the registration details as needed.</p>
+
+                <hr>
+
+                <h6>Notes:</h6>
+                <ul>
+                    <li>You can update payment status and attendance confirmation</li>
+                    <li>Select or deselect sessions as needed</li>
+                    <li>Add notes for any special circumstances</li>
+                </ul>
+
+                <hr>
+
+                <div class="d-grid gap-2">
+                    <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-primary">
+                        <i class="bi bi-info-circle"></i> View Details
+                    </a>
+                    <a asp-controller="Delegates" asp-action="Details" asp-route-id="@Model.DelegateId" class="btn btn-outline-info">
+                        <i class="bi bi-person"></i> View Delegate
+                    </a>
+                    <a asp-controller="Conferences" asp-action="Details" asp-route-id="@Model.ConferenceId" class="btn btn-outline-info">
+                        <i class="bi bi-calendar-event"></i> View Conference
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function() {
+            // Check if all sessions are already selected
+            var allChecked = $(".session-checkbox").length === $(".session-checkbox:checked").length;
+            $("#selectAllSessions").prop('checked', allChecked);
+
+            // Handle select all sessions checkbox
+            $("#selectAllSessions").change(function() {
+                $(".session-checkbox").prop('checked', $(this).prop('checked'));
+            });
+
+            // Update select all checkbox when individual checkboxes change
+            $(".session-checkbox").change(function() {
+                $("#selectAllSessions").prop('checked',
+                    $(".session-checkbox").length === $(".session-checkbox:checked").length);
+            });
+        });
+    </script>
+}
