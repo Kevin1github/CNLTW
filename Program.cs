@@ -79,6 +79,35 @@ using (var scope = app.Services.CreateScope())
         {
             roleManager.CreateAsync(new IdentityRole("Admin")).Wait();
         }
+
+        // Ensure delegate role exists
+        if (!roleManager.RoleExistsAsync("Delegate").Result)
+        {
+            roleManager.CreateAsync(new IdentityRole("Delegate")).Wait();
+        }
+
+        // Ensure admin user exists and has Admin role
+        var adminUser = userManager.FindByEmailAsync("admin@gmail.com").Result;
+        if (adminUser == null)
+        {
+            adminUser = new ApplicationUser
+            {
+                UserName = "admin@gmail.com",
+                Email = "admin@gmail.com",
+                EmailConfirmed = true,
+                FullName = "Administrator"
+            };
+
+            var result = userManager.CreateAsync(adminUser, "Admin@123").Result;
+            if (result.Succeeded)
+            {
+                userManager.AddToRoleAsync(adminUser, "Admin").Wait();
+            }
+        }
+        else if (!userManager.IsInRoleAsync(adminUser, "Admin").Result)
+        {
+            userManager.AddToRoleAsync(adminUser, "Admin").Wait();
+        }
     }
     catch (Exception ex)
     {

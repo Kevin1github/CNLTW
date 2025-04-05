@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using ConferenceDelegateManagement1234122.Models.Enums;
 
 namespace ConferenceDelegateManagement1234122.Models
 {
@@ -48,8 +49,15 @@ namespace ConferenceDelegateManagement1234122.Models
         [DataType(DataType.Date)]
         public DateTime? RegistrationDeadline { get; set; }
 
+        [Required]
         [Column(TypeName = "decimal(18,2)")]
+        [Display(Name = "Registration Fee")]
+        [Range(0, double.MaxValue, ErrorMessage = "Registration fee must be greater than or equal to 0")]
         public decimal RegistrationFee { get; set; }
+
+        [Required]
+        [Display(Name = "Allowed Payment Methods")]
+        public string AllowedPaymentMethods { get; set; } = "Cash,QRCode"; // Default to both methods
 
         [StringLength(1000)]
         public string? AdditionalDetails { get; set; }
@@ -57,6 +65,7 @@ namespace ConferenceDelegateManagement1234122.Models
         [EmailAddress]
         public string? OrganizerEmail { get; set; }
 
+        [StringLength(20)]
         public string? OrganizerPhone { get; set; }
 
         public int MaxAttendees { get; set; }
@@ -68,6 +77,7 @@ namespace ConferenceDelegateManagement1234122.Models
         // Navigation properties
         public virtual ICollection<Session> Sessions { get; set; } = new List<Session>();
         public virtual ICollection<Registration> Registrations { get; set; } = new List<Registration>();
+        public virtual ICollection<RestStop> RestStops { get; set; } = new List<RestStop>();
 
         [Display(Name = "Created At")]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

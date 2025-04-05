@@ -1,14 +1,57 @@
-﻿@model RegisterViewModel
+﻿@model ConferenceDelegateManagement1234122.Models.ViewModels.RegisterViewModel
+@using ConferenceDelegateManagement1234122.Models.Enums
 
-<h2>Register for @Model.ConferenceName</h2>
+<div class="container">
+    <h2>Register for @Model.ConferenceName</h2>
 
-<form asp-action="Register" method="post">
-    <input type="hidden" asp-for="ConferenceId" />
+    <div class="card">
+        <div class="card-body">
+            <form asp-action="Register" method="post">
+                <input type="hidden" asp-for="ConferenceId" />
 
-    <div class="mb-3">
-        <label>Registration Fee: </label>
-        <span>@Model.RegistrationFee.ToString("C")</span>
+                <div class="mb-4">
+                    <h4>Registration Fee: <span class="text-primary">@Model.RegistrationFee.ToString("C")</span></h4>
+                </div>
+
+                <div class="mb-4">
+                    <h5>Select Payment Method</h5>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" asp-for="PaymentMethod" id="cashPayment" value="Cash" checked>
+                        <label class="form-check-label" for="cashPayment">
+                            <i class="bi bi-cash"></i> Cash Payment
+                            <small class="text-muted d-block">Pay in cash at the conference</small>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" asp-for="PaymentMethod" id="qrPayment" value="QRCode">
+                        <label class="form-check-label" for="qrPayment">
+                            <i class="bi bi-qr-code"></i> QR Code Payment
+                            <small class="text-muted d-block">Pay now using QR code</small>
+                        </label>
+                    </div>
+                    <span asp-validation-for="PaymentMethod" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-success">
+                    <i class="bi bi-check-circle"></i> Confirm Registration
+                </button>
+                <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="bi bi-x-circle"></i> Cancel
+                </a>
+            </form>
+        </div>
     </div>
+</div>
 
-    <button type="submit" class="btn btn-success">Confirm Registration</button>
-</form>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function() {
+            // Thêm animation khi chọn phương thức thanh toán
+            $('input[name="PaymentMethod"]').change(function() {
+                $('.form-check').removeClass('border-primary bg-light');
+                $(this).closest('.form-check').addClass('border-primary bg-light');
+            });
+        });
+    </script>
+}

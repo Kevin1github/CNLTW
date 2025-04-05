@@ -1,8 +1,12 @@
 ﻿using ConferenceDelegateManagement1234122.Data;
 using ConferenceDelegateManagement1234122.Models;
+using ConferenceDelegateManagement1234122.Models.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using QRCoder;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace ConferenceDelegateManagement1234122.Controllers
 {
@@ -18,9 +22,8 @@ namespace ConferenceDelegateManagement1234122.Controllers
             _logger = logger;
         }
 
-
-
         // GET: Conferences
+        [AllowAnonymous]
         public async Task<IActionResult> Index(string searchString, string sortOrder, string currentFilter, int? pageNumber)
         {
             ViewData["CurrentSort"] = sortOrder;
@@ -69,6 +72,7 @@ namespace ConferenceDelegateManagement1234122.Controllers
         }
 
         // GET: Conferences/Details/5
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -78,13 +82,24 @@ namespace ConferenceDelegateManagement1234122.Controllers
 
             var conference = await _context.Conferences
                 .Include(c => c.Sessions)
+                .Include(c => c.RestStops)
                 .Include(c => c.Registrations)
-                    .ThenInclude(r => r.Delegate)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (conference == null)
             {
                 return NotFound();
+            }
+
+            // Load delegate details only for Admin
+            if (User.IsInRole("Admin"))
+            {
+                conference = await _context.Conferences
+                    .Include(c => c.Sessions)
+                    .Include(c => c.Registrations)
+                        .ThenInclude(r => r.Delegate)
+                    .Include(c => c.RestStops)
+                    .FirstOrDefaultAsync(m => m.Id == id);
             }
 
             return View(conference);
@@ -101,10 +116,19 @@ namespace ConferenceDelegateManagement1234122.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Create([Bind("Name,Description,StartDate,EndDate,Location,MaximumDelegates,RegistrationDeadline,OrganizerEmail,OrganizerPhone,IsActive,Venue")] Conference conference)
+        public async Task<IActionResult> Create([Bind("Name,Description,StartDate,EndDate,Location,MaximumDelegates,RegistrationDeadline,OrganizerEmail,OrganizerPhone,IsActive,RegistrationFee,AllowedPaymentMethods")] Conference conference)
         {
             if (ModelState.IsValid)
             {
+                // Ensure at least one payment method is selected
+                if (string.IsNullOrEmpty(conference.AllowedPaymentMethods))
+                {
+                    ModelState.AddModelError("AllowedPaymentMethods", "At least one payment method must be selected.");
+                    return View(conference);
+                }
+
+                conference.CreatedAt = DateTime.UtcNow;
+                conference.UpdatedAt = DateTime.UtcNow;
                 _context.Add(conference);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -206,6 +230,65 @@ namespace ConferenceDelegateManagement1234122.Controllers
             _context.Conferences.Remove(conference);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        // GET: Conferences/GenerateQRCode/5
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GenerateQRCode(int id)
+        {
+            var registration = await _context.Registrations
+                .Include(r => r.Delegate)
+                .Include(r => r.Conference)
+                .FirstOrDefaultAsync(r => r.Id == id);
+
+            if (registration == null)
+            {
+                return NotFound();
+            }
+
+            // Check if registration fee exists
+            if (registration.Conference.RegistrationFee <= 0)
+            {
+                return BadRequest("Registration fee must be greater than zero");
+            }
+
+            try
+            {
+                // Build payment URL with proper URL encoding
+                var paymentUrl = $"https://sandbox.vnpayment.vn/paymentv2/vpcpay.html?vnp_Amount={registration.Conference.RegistrationFee * 100}&vnp_Command=pay&vnp_CreateDate={DateTime.Now:yyyyMMddHHmmss}&vnp_CurrCode=VND&vnp_IpAddr={HttpContext.Connection.RemoteIpAddress}&vnp_Locale=vn&vnp_OrderInfo={Uri.EscapeDataString("Conference Registration")}&vnp_OrderType=other&vnp_ReturnUrl={Uri.EscapeDataString(Url.Action("PaymentCallback", "Conferences", null, Request.Scheme))}&vnp_TmnCode=YOUR_TMN_CODE&vnp_TxnRef={registration.RegistrationCode}&vnp_Version=2.1&vnp_SecureHash=YOUR_HASH";
+
+                using (var qrGenerator = new QRCodeGenerator())
+                {
+                    var qrCodeData = qrGenerator.CreateQrCode(paymentUrl, QRCodeGenerator.ECCLevel.Q);
+                    using (var qrCode = new BitmapByteQRCode(qrCodeData))
+                    {
+                        var qrCodeImage = qrCode.GetGraphic(20);
+                        return File(qrCodeImage, "image/png");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error generating QR code");
+                return StatusCode(500, "Error generating QR code");
+            }
+        }
+
+        // POST: Conferences/MarkPaymentAsPaid/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> MarkPaymentAsPaid(int id)
+        {
+            var registration = await _context.Registrations.FindAsync(id);
+            if (registration == null)
+            {
+                return NotFound();
+            }
+
+            registration.PaymentStatus = PaymentStatus.Paid;
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Details), new { id = registration.ConferenceId });
         }
 
         private bool ConferenceExists(int id)

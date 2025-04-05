@@ -1,0 +1,47 @@
+@model IEnumerable<ConferenceDelegateManagement1234122.Controllers.UserDelegateLinkViewModel>
+
+@{
+    ViewData["Title"] = "User Management";
+}
+
+<div class="container">
+    <h2>User Management</h2>
+    <p>Link Identity users with Delegate records to enable booking functionality.</p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>User Name</th>
+                <th>Email</th>
+                <th>Delegate</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.UserName</td>
+                    <td>@item.UserEmail</td>
+                    <td>@(item.DelegateName ?? "Not linked")</td>
+                    <td>
+                        @if (item.IsLinked)
+                        {
+                            <span class="badge bg-success">Linked</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-warning">Not Linked</span>
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="Link" asp-route-id="@item.UserId" class="btn btn-primary btn-sm">
+                            @(item.IsLinked ? "Change Link" : "Link")
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div> 

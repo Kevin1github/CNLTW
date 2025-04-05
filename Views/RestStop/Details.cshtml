@@ -1,0 +1,237 @@
+@model ConferenceDelegateManagement1234122.Models.RestStop
+@using ConferenceDelegateManagement1234122.Models.Enums
+
+@{
+    ViewData["Title"] = "Accommodation Details";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            @if (Model != null)
+            {
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0">@Model.Name</h4>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <div>
+                                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-light">
+                                    <i class="bi bi-pencil"></i> Edit
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-sm btn-danger">
+                                    <i class="bi bi-trash"></i> Delete
+                                </a>
+                            </div>
+                        }
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-md-3 fw-bold">Address:</div>
+                            <div class="col-md-9">@Model.Address</div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-3 fw-bold">Phone:</div>
+                            <div class="col-md-9">@Model.PhoneNumber</div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-3 fw-bold">Price per Night:</div>
+                            <div class="col-md-9">@Model.PricePerNight.ToString("C")</div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-3 fw-bold">Available Rooms:</div>
+                            <div class="col-md-9">@Model.AvailableRooms</div>
+                        </div>
+
+                        @if (!string.IsNullOrEmpty(Model.Description))
+                        {
+                            <div class="row mb-3">
+                                <div class="col-md-3 fw-bold">Description:</div>
+                                <div class="col-md-9">@Model.Description</div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                @if (User.IsInRole("Admin") && Model.Bookings != null && Model.Bookings.Any())
+                {
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Current Bookings</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Guest</th>
+                                            <th>Check-in</th>
+                                            <th>Check-out</th>
+                                            <th>Rooms</th>
+                                            <th>Total</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var booking in Model.Bookings.OrderBy(b => b.CheckInDate))
+                                        {
+                                            <tr>
+                                                <td>@(booking.Registration?.Delegate?.FullName ?? "N/A")</td>
+                                                <td>@booking.CheckInDate.ToString("MMM dd, yyyy")</td>
+                                                <td>@booking.CheckOutDate.ToString("MMM dd, yyyy")</td>
+                                                <td>@booking.NumberOfRooms</td>
+                                                <td>@booking.TotalPrice.ToString("C")</td>
+                                                <td>
+                                                    @{
+                                                        var status = booking.PaymentStatus;
+                                                        var statusClass = status == PaymentStatus.Paid ? "success" :
+                                                                        status == PaymentStatus.Pending ? "warning" : "danger";
+                                                    }
+                                                    <span class="badge bg-@statusClass">
+                                                        @status
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <div class="btn-group btn-group-sm">
+                                                        <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#bookingDetails-@booking.Id">
+                                                            <i class="bi bi-info-circle"></i>
+                                                        </button>
+                                                        @if (booking.PaymentStatus == PaymentStatus.Pending)
+                                                        {
+                                                            <form asp-action="MarkAsPaid" asp-route-id="@booking.Id" method="post" style="display: inline;">
+                                                                <button type="submit" class="btn btn-outline-success">
+                                                                    <i class="bi bi-check-circle"></i>
+                                                                </button>
+                                                            </form>
+                                                        }
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <!-- Booking Details Modal -->
+                                            <div class="modal fade" id="bookingDetails-@booking.Id" tabindex="-1">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Booking Details</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p><strong>Guest:</strong> @(booking.Registration?.Delegate?.FullName ?? "N/A")</p>
+                                                            <p><strong>Email:</strong> @(booking.Registration?.Delegate?.Email ?? "N/A")</p>
+                                                            <p><strong>Check-in:</strong> @booking.CheckInDate.ToString("MMM dd, yyyy")</p>
+                                                            <p><strong>Check-out:</strong> @booking.CheckOutDate.ToString("MMM dd, yyyy")</p>
+                                                            <p><strong>Number of Rooms:</strong> @booking.NumberOfRooms</p>
+                                                            <p><strong>Total Price:</strong> @booking.TotalPrice.ToString("C")</p>
+                                                            <p><strong>Payment Status:</strong> @booking.PaymentStatus</p>
+                                                            @if (!string.IsNullOrEmpty(booking.SpecialRequests))
+                                                            {
+                                                                <p><strong>Special Requests:</strong> @booking.SpecialRequests</p>
+                                                            }
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        }
+                        else if (!User.IsInRole("Admin") && Model.Bookings != null && Model.Bookings.Any())
+                        {
+                            <div class="card">
+                                <div class="card-header bg-primary text-white">
+                                    <h5 class="mb-0">Your Bookings</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Check-in</th>
+                                                    <th>Check-out</th>
+                                                    <th>Rooms</th>
+                                                    <th>Total</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var booking in Model.Bookings.OrderBy(b => b.CheckInDate))
+                                                {
+                                                    <tr>
+                                                        <td>@booking.CheckInDate.ToString("MMM dd, yyyy")</td>
+                                                        <td>@booking.CheckOutDate.ToString("MMM dd, yyyy")</td>
+                                                        <td>@booking.NumberOfRooms</td>
+                                                        <td>@booking.TotalPrice.ToString("C")</td>
+                                                        <td>
+                                                            @{
+                                                                var status = booking.PaymentStatus;
+                                                                var statusClass = status == PaymentStatus.Paid ? "success" :
+                                                                                status == PaymentStatus.Pending ? "warning" : "danger";
+                                                            }
+                                                            <span class="badge bg-@statusClass">
+                                                                @status
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        <!-- Quick Stats Card -->
+                        <div class="card mt-4">
+                            <div class="card-header bg-info text-white">
+                                <h5 class="mb-0">Quick Stats</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <span>Total Bookings:</span>
+                                    <span class="fw-bold">@(Model.Bookings?.Count ?? 0)</span>
+                                </div>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <span>Rooms Booked:</span>
+                                    <span class="fw-bold">@(Model.Bookings?.Sum(b => b.NumberOfRooms) ?? 0)</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span>Rooms Available:</span>
+                                    <span class="fw-bold">@Model.AvailableRooms</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-danger">
+                        <h4 class="alert-heading">Error</h4>
+                        <p>The requested accommodation could not be found.</p>
+                    </div>
+                }
+
+                <div class="mt-4">
+                    <a asp-controller="Conferences" asp-action="Details" asp-route-id="@Model?.ConferenceId" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i> Back to Conference
+                    </a>
+                    @if (!User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Book" asp-route-id="@Model.Id" class="btn btn-primary">
+                            <i class="bi bi-calendar-check"></i> Book Now
+                        </a>
+                    }
+                </div>
+            
+        </div>
+        }
+    }
+</div>

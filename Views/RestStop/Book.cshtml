@@ -1,0 +1,108 @@
+@model ConferenceDelegateManagement1234122.Models.RestStopBooking
+
+@{
+    ViewData["Title"] = "Book Accommodation";
+    var restStop = ViewData["RestStop"] as RestStop;
+    var registration = ViewData["Registration"] as Registration;
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Book Accommodation</h4>
+                </div>
+                <div class="card-body">
+                    @if (restStop != null)
+                    {
+                        <div class="alert alert-info mb-4">
+                            <h5>@restStop.Name</h5>
+                            <p class="mb-1"><i class="bi bi-geo-alt"></i> @restStop.Address</p>
+                            <p class="mb-1"><i class="bi bi-currency-dollar"></i> @restStop.PricePerNight.ToString("C") per night</p>
+                            <p class="mb-0"><i class="bi bi-house"></i> @restStop.AvailableRooms rooms available</p>
+                        </div>
+
+                        <form asp-action="Book" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                            <input type="hidden" asp-for="RestStopId" value="@restStop.Id" />
+                            @if (registration != null)
+                            {
+                                <input type="hidden" asp-for="RegistrationId" value="@registration.Id" />
+                            }
+
+                            <div class="mb-3">
+                                <label asp-for="CheckInDate" class="form-label">Check-in Date</label>
+                                <input asp-for="CheckInDate" class="form-control" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                                <span asp-validation-for="CheckInDate" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="CheckOutDate" class="form-label">Check-out Date</label>
+                                <input asp-for="CheckOutDate" class="form-control" type="date" min="@DateTime.Now.AddDays(1).ToString("yyyy-MM-dd")" />
+                                <span asp-validation-for="CheckOutDate" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="NumberOfRooms" class="form-label">Number of Rooms</label>
+                                <input asp-for="NumberOfRooms" class="form-control" type="number" min="1" max="@restStop.AvailableRooms" />
+                                <span asp-validation-for="NumberOfRooms" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="SpecialRequests" class="form-label">Special Requests</label>
+                                <textarea asp-for="SpecialRequests" class="form-control" rows="3"></textarea>
+                                <span asp-validation-for="SpecialRequests" class="text-danger"></span>
+                            </div>
+
+                            <div class="d-flex justify-content-between">
+                                <a asp-controller="Conferences" asp-action="Details" asp-route-id="@restStop.ConferenceId" class="btn btn-secondary">
+                                    <i class="bi bi-arrow-left"></i> Back
+                                </a>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-calendar-check"></i> Book Now
+                                </button>
+                            </div>
+                        </form>
+                    }
+                    else
+                    {
+                        <div class="alert alert-danger">
+                            Accommodation information not found.
+                        </div>
+                        <a asp-controller="Conferences" asp-action="Index" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left"></i> Back to Conferences
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(document).ready(function () {
+            // Calculate total price when dates or number of rooms change
+            function updateTotalPrice() {
+                var checkIn = new Date($('#CheckInDate').val());
+                var checkOut = new Date($('#CheckOutDate').val());
+                var numberOfRooms = $('#NumberOfRooms').val();
+                var pricePerNight = @restStop?.PricePerNight.ToString("F2");
+
+                if (!isNaN(checkIn) && !isNaN(checkOut) && numberOfRooms > 0) {
+                    var nights = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
+                    if (nights > 0) {
+                        var totalPrice = nights * numberOfRooms * pricePerNight;
+                        $('#totalPrice').text('Total Price: $' + totalPrice.toFixed(2));
+                    }
+                }
+            }
+
+            $('#CheckInDate, #CheckOutDate, #NumberOfRooms').change(updateTotalPrice);
+        });
+    </script>
+} 

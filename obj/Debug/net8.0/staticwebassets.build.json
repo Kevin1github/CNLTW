@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4BmKoWKsxTcXMMwXXpUaVVYKjGFVNcPHaZyWe33Heb0=",
+  "Hash": "+poWhY9DAyxrjNgPAqSvzaQc1IRWBVXfACltCNGzwKE=",
   "Source": "ConferenceDelegateManagement1234122",
   "BasePath": "_content/ConferenceDelegateManagement1234122",
   "Mode": "Default",
@@ -1359,6 +1359,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\wwwroot\\images\\bank-qr.jpg",
+      "SourceId": "ConferenceDelegateManagement1234122",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\wwwroot\\",
+      "BasePath": "_content/ConferenceDelegateManagement1234122",
+      "RelativePath": "images/bank-qr#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "cdt3ulu0kv",
+      "Integrity": "kBZJmoJKTqqbVA0pGvYPUu/TG7yTY+UK4rwObvOMhYo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\bank-qr.jpg"
     },
     {
       "Identity": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\wwwroot\\js\\site.js",
@@ -5125,6 +5146,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s="
+        }
+      ]
+    },
+    {
+      "Route": "images/bank-qr.cdt3ulu0kv.jpg",
+      "AssetFile": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\wwwroot\\images\\bank-qr.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "87125"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kBZJmoJKTqqbVA0pGvYPUu/TG7yTY+UK4rwObvOMhYo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 15:17:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "cdt3ulu0kv"
+        },
+        {
+          "Name": "label",
+          "Value": "images/bank-qr.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-kBZJmoJKTqqbVA0pGvYPUu/TG7yTY+UK4rwObvOMhYo="
+        }
+      ]
+    },
+    {
+      "Route": "images/bank-qr.jpg",
+      "AssetFile": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\wwwroot\\images\\bank-qr.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "87125"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kBZJmoJKTqqbVA0pGvYPUu/TG7yTY+UK4rwObvOMhYo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 15:17:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-kBZJmoJKTqqbVA0pGvYPUu/TG7yTY+UK4rwObvOMhYo="
         }
       ]
     },

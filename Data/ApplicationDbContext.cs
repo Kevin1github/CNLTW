@@ -17,16 +17,20 @@ namespace ConferenceDelegateManagement1234122.Data
         public DbSet<Registration> Registrations { get; set; }
         public DbSet<Session> Sessions { get; set; }
         public DbSet<SessionAttendance> SessionAttendances { get; set; } = null!;
-
+        public DbSet<RestStop> RestStops { get; set; }
+        public DbSet<RestStopBooking> RestStopBookings { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder); // Gọi base trước để tránh lỗi Identity
+            base.OnModelCreating(modelBuilder);
 
-            //modelBuilder.Entity<ApplicationUser>()
-                //.HasIndex(u => u.CCCD)
-                //.IsUnique()
-                //.HasFilter("CCCD IS NOT NULL");
+            modelBuilder.Entity<ApplicationUser>(entity =>
+            {
+                entity.Property(e => e.FullName).IsRequired().HasMaxLength(100);
+                entity.Property(e => e.Company).HasMaxLength(100).IsRequired(false);
+                entity.Property(e => e.JobTitle).HasMaxLength(100).IsRequired(false);
+                entity.Property(e => e.CCCD).IsRequired(false);
+            });
 
             modelBuilder.Entity<Conference>()
                 .Property(c => c.City)
@@ -71,7 +75,29 @@ namespace ConferenceDelegateManagement1234122.Data
                 .HasMany(d => d.Schedules)
                 .WithOne(s => s.ConferenceDelegate)
                 .HasForeignKey(s => s.ConferenceDelegateId);
+
+            // Conference - RestStop relationship
+            modelBuilder.Entity<RestStop>()
+                .HasOne(r => r.Conference)
+                .WithMany(c => c.RestStops)
+                .HasForeignKey(r => r.ConferenceId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // RestStop - RestStopBooking relationship
+            modelBuilder.Entity<RestStopBooking>()
+                .HasOne(b => b.RestStop)
+                .WithMany(r => r.Bookings)
+                .HasForeignKey(b => b.RestStopId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Registration - RestStopBooking relationship
+            modelBuilder.Entity<RestStopBooking>()
+                .HasOne(b => b.Registration)
+                .WithMany()
+                .HasForeignKey(b => b.RegistrationId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
+
         public override int SaveChanges()
         {
             AddTimestamps();
@@ -88,7 +114,9 @@ namespace ConferenceDelegateManagement1234122.Data
         {
             var entities = ChangeTracker.Entries()
                 .Where(x => (x.Entity is Conference || x.Entity is Models.Delegate1 ||
-                             x.Entity is Session || x.Entity is Registration) &&
+                             x.Entity is Session || x.Entity is Registration ||
+                             x.Entity is RestStop || x.Entity is RestStopBooking ||
+                             x.Entity is ApplicationUser) &&
                             (x.State == EntityState.Added || x.State == EntityState.Modified));
 
             foreach (var entity in entities)
@@ -97,24 +125,13 @@ namespace ConferenceDelegateManagement1234122.Data
 
                 if (entity.State == EntityState.Added)
                 {
-                    if (entity.Entity is Conference conference)
-                        conference.CreatedAt = now;
-                    else if (entity.Entity is Models.Delegate1 delegateEntity)
-                        delegateEntity.CreatedAt = now;
-                    else if (entity.Entity is Session session)
-                        session.CreatedAt = now;
-                    else if (entity.Entity is Registration registration)
-                        registration.CreatedAt = now;
+                    entity.Property("CreatedAt").CurrentValue = now;
                 }
 
-                if (entity.Entity is Conference conf)
-                    conf.UpdatedAt = now;
-                else if (entity.Entity is Models.Delegate1 del)
-                    del.UpdatedAt = now;
-                else if (entity.Entity is Session ses)
-                    ses.UpdatedAt = now;
-                else if (entity.Entity is Registration reg)
-                    reg.UpdatedAt = now;
+                if (entity.Property("UpdatedAt") != null)
+                {
+                    entity.Property("UpdatedAt").CurrentValue = now;
+                }
             }
         }
     }

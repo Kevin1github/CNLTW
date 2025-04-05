@@ -40,7 +40,18 @@
                                         <td>@String.Format("{0:C}", conference.RegistrationFee)</td>
                                         <td>
                                             <a asp-controller="Conferences" asp-action="Details" asp-route-id="@conference.Id" class="btn btn-info btn-sm">View Details</a>
-                                            <a asp-controller="Registrations" asp-action="Register" asp-route-conferenceId="@conference.Id" class="btn btn-success btn-sm">Register</a>
+
+                                            @if (User.Identity.IsAuthenticated)
+                                            {
+                                                <a asp-controller="Registrations" asp-action="Register" asp-route-conferenceId="@conference.Id" class="btn btn-success btn-sm">Register</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.Action("Login", "Account", new { returnUrl = Url.Action("Register", "Registrations", new { conferenceId = conference.Id }) })"
+                                                   class="btn btn-success btn-sm">
+                                                    Register
+                                                </a>
+                                            }
                                         </td>
                                     </tr>
                                 }
@@ -62,67 +73,70 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4 mb-4">
-        <div class="card h-100">
-            <div class="card-header bg-success text-white">
-                <h5 class="mb-0">Delegates</h5>
-            </div>
-            <div class="card-body">
-                <p>Manage your conference delegates information, including contact details, organizations, and special requirements.</p>
-                <ul>
-                    <li>Register new delegates</li>
-                    <li>View delegate information</li>
-                    <li>Update contact details</li>
-                    <li>Manage special requirements</li>
-                </ul>
-            </div>
-            <div class="card-footer">
-                <a asp-controller="Delegates" asp-action="Index" class="btn btn-outline-success">Manage Delegates</a>
+@if (User.IsInRole("Admin"))
+{
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">Delegates</h5>
+                </div>
+                <div class="card-body">
+                    <p>Manage your conference delegates information, including contact details, organizations, and special requirements.</p>
+                    <ul>
+                        <li>Register new delegates</li>
+                        <li>View delegate information</li>
+                        <li>Update contact details</li>
+                        <li>Manage special requirements</li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <a asp-controller="Delegates" asp-action="Index" class="btn btn-outline-success">Manage Delegates</a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-md-4 mb-4">
-        <div class="card h-100">
-            <div class="card-header bg-info text-white">
-                <h5 class="mb-0">Sessions</h5>
-            </div>
-            <div class="card-body">
-                <p>Organize conference sessions, track attendance, and manage session schedules and speakers.</p>
-                <ul>
-                    <li>Create new sessions</li>
-                    <li>Manage session details</li>
-                    <li>Track attendance</li>
-                    <li>Handle session feedback</li>
-                </ul>
-            </div>
-            <div class="card-footer">
-                <a asp-controller="Sessions" asp-action="Index" class="btn btn-outline-info">Manage Sessions</a>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">Sessions</h5>
+                </div>
+                <div class="card-body">
+                    <p>Organize conference sessions, track attendance, and manage session schedules and speakers.</p>
+                    <ul>
+                        <li>Create new sessions</li>
+                        <li>Manage session details</li>
+                        <li>Track attendance</li>
+                        <li>Handle session feedback</li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <a asp-controller="Sessions" asp-action="Index" class="btn btn-outline-info">Manage Sessions</a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-md-4 mb-4">
-        <div class="card h-100">
-            <div class="card-header bg-warning text-dark">
-                <h5 class="mb-0">Registrations</h5>
-            </div>
-            <div class="card-body">
-                <p>Process conference registrations, payments, and manage registration status updates.</p>
-                <ul>
-                    <li>Create new registrations</li>
-                    <li>Process payments</li>
-                    <li>Update registration status</li>
-                    <li>Generate reports</li>
-                </ul>
-            </div>
-            <div class="card-footer">
-                <a asp-controller="Registrations" asp-action="Index" class="btn btn-outline-warning">Manage Registrations</a>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">Registrations</h5>
+                </div>
+                <div class="card-body">
+                    <p>Process conference registrations, payments, and manage registration status updates.</p>
+                    <ul>
+                        <li>Create new registrations</li>
+                        <li>Process payments</li>
+                        <li>Update registration status</li>
+                        <li>Generate reports</li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <a asp-controller="Registrations" asp-action="Index" class="btn btn-outline-warning">Manage Registrations</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
+}
 
 <div class="row mb-4">
     <div class="col-md-4">
@@ -131,7 +145,14 @@
                 <i class="bi bi-people-fill display-4 text-primary"></i>
                 <h3 class="card-title mt-3">@ViewData["TotalDelegates"]</h3>
                 <p class="card-text">Delegates</p>
-                <a asp-controller="Delegates" asp-action="Index" class="btn btn-outline-primary">View All</a>
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-controller="Delegates" asp-action="Index" class="btn btn-outline-primary">View All</a>
+                }
+                else
+                {
+                    <a href="#" class="btn btn-outline-secondary" onclick="alert('Access Denied: You do not have permission to view this page'); return false;">View All</a>
+                }
             </div>
         </div>
     </div>

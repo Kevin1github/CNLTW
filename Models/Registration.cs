@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using ConferenceDelegateManagement1234122.Models.Enums;
 
 namespace ConferenceDelegateManagement1234122.Models
 {
@@ -47,13 +48,5 @@ namespace ConferenceDelegateManagement1234122.Models
 
         [Display(Name = "Updated At")]
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
-    }
-
-    public enum PaymentStatus
-    {
-        Pending,
-        Paid,
-        Cancelled,
-        Refunded
     }
 }

@@ -1,10 +1,14 @@
-﻿using ConferenceDelegateManagement1234122.Data;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
+using ConferenceDelegateManagement1234122.Data;
 using ConferenceDelegateManagement1234122.Models;
+using ConferenceDelegateManagement1234122.Models.Enums;
+using ConferenceDelegateManagement1234122.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace ConferenceDelegateManagement1234122.Controllers
 {
@@ -28,19 +32,18 @@ namespace ConferenceDelegateManagement1234122.Controllers
                 return NotFound();
             }
 
-            // Load conference thông tin từ database (giả sử dùng Entity Framework)
             var conference = _context.Conferences.Find(conferenceId);
             if (conference == null)
             {
                 return NotFound();
             }
 
-            // Truyền thông tin conference sang view
             var model = new RegisterViewModel
             {
                 ConferenceId = conference.Id,
                 ConferenceName = conference.Name,
-                RegistrationFee = conference.RegistrationFee
+                RegistrationFee = conference.RegistrationFee,
+                PaymentMethod = "Cash"
             };
 
             return View(model);
@@ -48,11 +51,17 @@ namespace ConferenceDelegateManagement1234122.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Register(RegisterViewModel model)
+        public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var delegateUser = _context.Delegates.FirstOrDefault(d => d.Email == User.Identity.Name);
+                var conference = await _context.Conferences.FindAsync(model.ConferenceId);
+                if (conference == null)
+                {
+                    return NotFound("Conference not found.");
+                }
+
+                var delegateUser = await _context.Delegates.FirstOrDefaultAsync(d => d.Email == User.Identity.Name);
                 if (delegateUser == null)
                 {
                     return BadRequest("Delegate not found.");
@@ -60,21 +69,69 @@ namespace ConferenceDelegateManagement1234122.Controllers
 
                 var registration = new Registration
                 {
-                    DelegateId = delegateUser.Id, // Giả sử delegate đăng nhập
+                    DelegateId = delegateUser.Id,
                     ConferenceId = model.ConferenceId,
-                    RegistrationDate = DateTime.Now
+                    RegistrationDate = DateTime.Now,
+                    PaymentStatus = PaymentStatus.Pending,
+                    RegistrationCode = GenerateRegistrationCode()
                 };
 
                 _context.Registrations.Add(registration);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
 
-                return RedirectToAction("Index", "Delegates"); // Điều hướng về danh sách delegate đã đăng ký
+                if (model.PaymentMethod == "Cash")
+                {
+                    TempData["SuccessMessage"] = "Registration successful! Please pay in cash at the conference.";
+                    return RedirectToAction("Index", "Home");
+                }
+                else if (model.PaymentMethod == "QRCode")
+                {
+                    TempData["PaymentAmount"] = conference.RegistrationFee.ToString("N0");
+                    TempData["PaymentCode"] = registration.RegistrationCode;
+                    return RedirectToAction("ShowQRCode", new { registrationId = registration.Id });
+                }
             }
 
-            return View(model); // Nếu có lỗi validation, hiển thị lại form
+            var conf = await _context.Conferences.FindAsync(model.ConferenceId);
+            if (conf != null)
+            {
+                model.ConferenceName = conf.Name;
+                model.RegistrationFee = conf.RegistrationFee;
+            }
+            return View(model);
+        }
+
+        private string GenerateRegistrationCode()
+        {
+            return $"REG-{DateTime.Now:yyyyMMdd}-{Guid.NewGuid().ToString().Substring(0, 8)}";
+        }
+
+        public IActionResult ShowQRCode(int registrationId)
+        {
+            var registration = _context.Registrations
+                .Include(r => r.Conference)
+                .Include(r => r.Delegate)
+                .FirstOrDefault(r => r.Id == registrationId);
+
+            if (registration == null)
+            {
+                return NotFound();
+            }
+
+            // Tạo nội dung QR code (ví dụ: thông tin chuyển khoản)
+            var qrContent = $"Conference: {registration.Conference.Name}\n" +
+                          $"Amount: {registration.Conference.RegistrationFee:N0} VND\n" +
+                          $"Code: {registration.RegistrationCode}";
+
+            ViewData["QRContent"] = qrContent;
+            ViewData["Amount"] = registration.Conference.RegistrationFee.ToString("N0");
+            ViewData["RegistrationCode"] = registration.RegistrationCode;
+
+            return View();
         }
 
         // GET: Registrations
+        [Authorize(Roles = "Admin")] // Chỉ admin mới xem được danh sách đăng ký
         public async Task<IActionResult> Index(int? conferenceId, int? delegateId, string paymentStatus, int? pageNumber)
         {
             var registrations = _context.Registrations

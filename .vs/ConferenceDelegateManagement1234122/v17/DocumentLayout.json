@@ -3,12 +3,124 @@
   "WorkspaceRootPath": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\views\\registrations\\showqrcode.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:views\\registrations\\showqrcode.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\controllers\\registrationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:controllers\\registrationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\models\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:models\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\models\\delegate1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:models\\delegate1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\models\\enums\\paymentmethod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:models\\enums\\paymentmethod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\views\\delegates\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:views\\delegates\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\models\\enums\\paymentstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:models\\enums\\paymentstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\controllers\\conferencescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:controllers\\conferencescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\views\\conferences\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:views\\conferences\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\controllers\\reststopcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:controllers\\reststopcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\views\\reststop\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:views\\reststop\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\models\\conference.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:models\\conference.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\controllers\\sessionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:controllers\\sessionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\views\\conferences\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:views\\conferences\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\controllers\\delegatescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:controllers\\delegatescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\models\\conferencedelegate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:models\\conferencedelegate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\views\\registrations\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:views\\registrations\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\views\\sessions\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:views\\sessions\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\views\\registrations\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:views\\registrations\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\views\\registrations\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:views\\registrations\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\views\\registrations\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:views\\registrations\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\views\\reststop\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:views\\reststop\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\views\\conferences\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:views\\conferences\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\views\\delegates\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:views\\delegates\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\services\\delegateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,60 +139,12 @@
       "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:models\\registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\models\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:models\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\models\\delegate1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:models\\delegate1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\models\\conferencedelegate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:models\\conferencedelegate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\models\\conference.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:models\\conference.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\controllers\\registrationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:controllers\\registrationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\views\\registrations\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:views\\registrations\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\views\\registrations\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:views\\registrations\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\views\\conferences\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:views\\conferences\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\controllers\\delegatescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:controllers\\delegatescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\views\\conferences\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:views\\conferences\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -89,10 +153,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\models\\sessionattendance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:models\\sessionattendance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\controllers\\sessionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:controllers\\sessionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -102,7 +162,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 317,
-          "SelectedChildIndex": 12,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -110,7 +170,200 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 6,
+              "Title": "PaymentStatus.cs",
+              "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\Enums\\PaymentStatus.cs",
+              "RelativeDocumentMoniker": "Models\\Enums\\PaymentStatus.cs",
+              "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\Enums\\PaymentStatus.cs",
+              "RelativeToolTip": "Models\\Enums\\PaymentStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-05T14:39:53.854Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PaymentMethod.cs",
+              "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\Enums\\PaymentMethod.cs",
+              "RelativeDocumentMoniker": "Models\\Enums\\PaymentMethod.cs",
+              "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\Enums\\PaymentMethod.cs",
+              "RelativeToolTip": "Models\\Enums\\PaymentMethod.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-05T14:39:47.233Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ShowQRCode.cshtml",
+              "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Registrations\\ShowQRCode.cshtml",
+              "RelativeDocumentMoniker": "Views\\Registrations\\ShowQRCode.cshtml",
+              "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Registrations\\ShowQRCode.cshtml",
+              "RelativeToolTip": "Views\\Registrations\\ShowQRCode.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-05T14:31:49.31Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "RestStopController.cs",
+              "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Controllers\\RestStopController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RestStopController.cs",
+              "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Controllers\\RestStopController.cs",
+              "RelativeToolTip": "Controllers\\RestStopController.cs",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAAAHcBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T15:32:33.553Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ProfileController.cs",
+              "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Controllers\\ProfileController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProfileController.cs",
+              "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Controllers\\ProfileController.cs",
+              "RelativeToolTip": "Controllers\\ProfileController.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAEIAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T14:58:31.974Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Registrations\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Registrations\\Create.cshtml",
+              "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Registrations\\Create.cshtml",
+              "RelativeToolTip": "Views\\Registrations\\Create.cshtml",
+              "ViewState": "AgIAACIAAAAAAAAAAAAnwCoAAABuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-26T15:40:16.705Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Sessions\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Sessions\\Details.cshtml",
+              "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Sessions\\Details.cshtml",
+              "RelativeToolTip": "Views\\Sessions\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-26T15:39:53.275Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Registrations\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Registrations\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Registrations\\Index.cshtml",
+              "RelativeToolTip": "Views\\Registrations\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-26T15:39:37.699Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Registrations\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Registrations\\Details.cshtml",
+              "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Registrations\\Details.cshtml",
+              "RelativeToolTip": "Views\\Registrations\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-26T15:39:22.331Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Registrations\\Delete.cshtml",
+              "RelativeDocumentMoniker": "Views\\Registrations\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Registrations\\Delete.cshtml",
+              "RelativeToolTip": "Views\\Registrations\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-26T15:39:08.764Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Delegates\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Delegates\\Details.cshtml",
+              "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Delegates\\Details.cshtml",
+              "RelativeToolTip": "Views\\Delegates\\Details.cshtml",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAqwHQAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-26T15:38:12.776Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\RestStop\\Delete.cshtml",
+              "RelativeDocumentMoniker": "Views\\RestStop\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\RestStop\\Delete.cshtml",
+              "RelativeToolTip": "Views\\RestStop\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-26T15:31:48.33Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\RestStop\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\RestStop\\Details.cshtml",
+              "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\RestStop\\Details.cshtml",
+              "RelativeToolTip": "Views\\RestStop\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAOsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-26T15:26:27.543Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAqwDkAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-26T06:10:26.088Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Delegates\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Delegates\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Delegates\\Index.cshtml",
+              "RelativeToolTip": "Views\\Delegates\\Index.cshtml",
+              "ViewState": "AgIAAH8AAAAAAAAAAAAcwBAAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-23T13:41:07.14Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Conferences\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Conferences\\Details.cshtml",
+              "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Conferences\\Details.cshtml",
+              "RelativeToolTip": "Views\\Conferences\\Details.cshtml",
+              "ViewState": "AgIAACIAAAAAAAAAAAArwCwAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-23T13:36:09.227Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
               "Title": "Register.cshtml",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Registrations\\Register.cshtml",
               "RelativeDocumentMoniker": "Views\\Registrations\\Register.cshtml",
@@ -122,55 +375,43 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "RegisterViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\RegisterViewModel.cs",
               "RelativeDocumentMoniker": "Models\\RegisterViewModel.cs",
               "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\RegisterViewModel.cs",
               "RelativeToolTip": "Models\\RegisterViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-19T05:47:00.423Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Registrations\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Registrations\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Registrations\\Index.cshtml",
-              "RelativeToolTip": "Views\\Registrations\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-19T05:45:27.909Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 27,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Conferences\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Conferences\\Index.cshtml",
               "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Conferences\\Index.cshtml",
               "RelativeToolTip": "Views\\Conferences\\Index.cshtml",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAowHIAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-03-19T05:34:25.629Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 1,
               "Title": "RegistrationsController.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Controllers\\RegistrationsController.cs",
               "RelativeDocumentMoniker": "Controllers\\RegistrationsController.cs",
               "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Controllers\\RegistrationsController.cs",
               "RelativeToolTip": "Controllers\\RegistrationsController.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAIwDoAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAAAAAAAAAAAwwCgAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-18T15:38:47.51Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 16,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Conferences\\Create.cshtml",
               "RelativeDocumentMoniker": "Views\\Conferences\\Create.cshtml",
@@ -182,7 +423,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 36,
               "Title": "_LoginPartial.cshtml",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Shared\\_LoginPartial.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_LoginPartial.cshtml",
@@ -194,7 +435,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 35,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
@@ -206,31 +447,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 37,
               "Title": "SessionAttendance.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\SessionAttendance.cs",
               "RelativeDocumentMoniker": "Models\\SessionAttendance.cs",
               "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\SessionAttendance.cs",
               "RelativeToolTip": "Models\\SessionAttendance.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAC4AAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-16T15:31:14.893Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 12,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
               "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Data\\ApplicationDbContext.cs",
               "RelativeToolTip": "Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAEwBwAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAiwB8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-16T14:00:39.352Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 30,
               "Title": "DelegateService.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Services\\DelegateService.cs",
               "RelativeDocumentMoniker": "Services\\DelegateService.cs",
@@ -242,20 +483,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 29,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAABuAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAswA0AAABuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T13:56:32.347Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-16T13:56:32.347Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 32,
               "Title": "Schedule.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\Schedule.cs",
               "RelativeDocumentMoniker": "Models\\Schedule.cs",
@@ -267,19 +507,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 18,
               "Title": "ConferenceDelegate.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\ConferenceDelegate.cs",
               "RelativeDocumentMoniker": "Models\\ConferenceDelegate.cs",
               "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\ConferenceDelegate.cs",
               "RelativeToolTip": "Models\\ConferenceDelegate.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAYwBkAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-16T13:47:39.467Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 31,
               "Title": "Session.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\Session.cs",
               "RelativeDocumentMoniker": "Models\\Session.cs",
@@ -291,55 +531,55 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 33,
               "Title": "Registration.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\Registration.cs",
               "RelativeDocumentMoniker": "Models\\Registration.cs",
               "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\Registration.cs",
               "RelativeToolTip": "Models\\Registration.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAYwDoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAYwDMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-16T07:43:06.242Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
               "Title": "Delegate1.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\Delegate1.cs",
               "RelativeDocumentMoniker": "Models\\Delegate1.cs",
               "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\Delegate1.cs",
               "RelativeToolTip": "Models\\Delegate1.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAYwDoAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-16T07:42:39.889Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 14,
               "Title": "Conference.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\Conference.cs",
               "RelativeDocumentMoniker": "Models\\Conference.cs",
               "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\Conference.cs",
               "RelativeToolTip": "Models\\Conference.cs",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAYwFoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAYwCsAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-16T07:42:10.275Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "ApplicationUser.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\ApplicationUser.cs",
               "RelativeDocumentMoniker": "Models\\ApplicationUser.cs",
               "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\ApplicationUser.cs",
               "RelativeToolTip": "Models\\ApplicationUser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-16T07:41:14.803Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 15,
               "Title": "SessionsController.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Controllers\\SessionsController.cs",
               "RelativeDocumentMoniker": "Controllers\\SessionsController.cs",
@@ -351,40 +591,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
               "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Controllers\\HomeController.cs",
               "RelativeToolTip": "Controllers\\HomeController.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAIwCsAAABAAAAAAAAAAA==",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAACsAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-16T07:35:12.302Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 17,
               "Title": "DelegatesController.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Controllers\\DelegatesController.cs",
               "RelativeDocumentMoniker": "Controllers\\DelegatesController.cs",
               "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Controllers\\DelegatesController.cs",
               "RelativeToolTip": "Controllers\\DelegatesController.cs",
-              "ViewState": "AgIAAI0AAAAAAAAAAAAAAEMAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAGkAAABXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-16T07:33:31.294Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "ConferencesController.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Controllers\\ConferencesController.cs",
               "RelativeDocumentMoniker": "Controllers\\ConferencesController.cs",
               "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Controllers\\ConferencesController.cs",
               "RelativeToolTip": "Controllers\\ConferencesController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGcAAACwAAAAAAAAAA==",
+              "ViewState": "AgIAADYBAAAAAAAAAAAAABYBAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T07:33:00.569Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-16T07:33:00.569Z"
             }
           ]
         }

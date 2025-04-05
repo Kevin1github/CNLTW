@@ -17,7 +17,7 @@ namespace ConferenceDelegateManagement1234122.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             List<Conference> conferences = new List<Conference>();
             List<Conference> upcomingConferences = new List<Conference>();
@@ -27,11 +27,12 @@ namespace ConferenceDelegateManagement1234122.Controllers
             {
                 if (_context.Database.CanConnect())
                 {
-                    // Lấy tất cả hội thảo
-                    conferences = _context.Conferences
+                    // Lấy tất cả hội thảo và include các thông tin liên quan
+                    conferences = await _context.Conferences
                         .Include(c => c.Sessions)
+                        .Include(c => c.Registrations)
                         .AsNoTracking()
-                        .ToList();
+                        .ToListAsync();
 
                     // Lọc hội thảo sắp diễn ra
                     upcomingConferences = conferences
@@ -40,8 +41,16 @@ namespace ConferenceDelegateManagement1234122.Controllers
                         .Take(5)
                         .ToList();
 
-                    // Lấy số lượng Delegates từ bảng Delegates
-                    totalDelegates = _context.Delegates.Count();
+                    // Lấy số lượng Delegates từ bảng AspNetUsers và AspNetUserRoles
+                    var delegateRole = await _context.Roles
+                        .FirstOrDefaultAsync(r => r.Name == "Delegate");
+
+                    if (delegateRole != null)
+                    {
+                        totalDelegates = await _context.UserRoles
+                            .Where(ur => ur.RoleId == delegateRole.Id)
+                            .CountAsync();
+                    }
 
                     _logger.LogInformation("Retrieved {Count} conferences, {UpcomingCount} upcoming conferences, {DelegateCount} delegates",
                         conferences.Count, upcomingConferences.Count, totalDelegates);
@@ -53,13 +62,14 @@ namespace ConferenceDelegateManagement1234122.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error retrieving conferences from the database.");
+                _logger.LogError(ex, "Error retrieving data from the database: {Message}", ex.Message);
             }
 
-            // Trả dữ liệu trực tiếp vào View
-            ViewData["TotalDelegates"] = conferences.Sum(c => c.TotalDelegates);
+            // Trả dữ liệu vào ViewData
+            ViewData["TotalDelegates"] = totalDelegates;
             ViewData["TotalConferences"] = conferences.Count;
-            ViewData["TotalSessions"] = conferences.Sum(c => c.Sessions.Count);
+            ViewData["TotalSessions"] = conferences.Sum(c => c.Sessions?.Count ?? 0);
+            ViewData["UpcomingConferences"] = upcomingConferences;
 
             return View(conferences);
         }

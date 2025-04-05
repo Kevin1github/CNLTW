@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\wwwroot\\images\\bank-qr.jpg",
+      "PackagePath": "staticwebassets\\images\\bank-qr.jpg"
+    },
+    {
       "Id": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

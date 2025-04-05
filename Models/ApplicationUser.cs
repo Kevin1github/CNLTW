@@ -10,14 +10,18 @@ namespace ConferenceDelegateManagement1234122.Models
         [StringLength(100)]
         public string FullName { get; set; } = string.Empty;
 
-        //[Required]
-        //[StringLength(12, MinimumLength = 9, ErrorMessage = "CCCD phải có từ 9 đến 12 chữ số.")]
-        public string? CCCD { get; set; } = string.Empty; // Căn cước công dân
+        [StringLength(200)]
+        public string? Address { get; set; } = string.Empty;
 
-        [Required]
-        [StringLength(50)]
-        public string Role { get; set; } = "Delegate"; // Role: Admin, Delegate
+        [StringLength(100)]
+        public string? Company { get; set; } = string.Empty;
+
+        [StringLength(100)]
+        public string? JobTitle { get; set; } = string.Empty;
+
+        public string? CCCD { get; set; } = string.Empty;
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
     }
 }

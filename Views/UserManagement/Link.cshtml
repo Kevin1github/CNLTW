@@ -1,0 +1,64 @@
+@model ConferenceDelegateManagement1234122.Controllers.UserDelegateLinkViewModel
+
+@{
+    ViewData["Title"] = "Link User to Delegate";
+}
+
+<div class="container">
+    <h2>Link User to Delegate</h2>
+    
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5>User Information</h5>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Name:</dt>
+                <dd class="col-sm-9">@Model.UserName</dd>
+                
+                <dt class="col-sm-3">Email:</dt>
+                <dd class="col-sm-9">@Model.UserEmail</dd>
+                
+                @if (Model.IsLinked)
+                {
+                    <dt class="col-sm-3">Current Delegate:</dt>
+                    <dd class="col-sm-9">@Model.DelegateName</dd>
+                }
+            </dl>
+        </div>
+    </div>
+    
+    <form asp-action="Link" method="post">
+        <input type="hidden" name="id" value="@Model.UserId" />
+        
+        <div class="form-group mb-3">
+            <label for="delegateId" class="form-label">Select Delegate:</label>
+            <select name="delegateId" id="delegateId" class="form-select" required>
+                <option value="">-- Select a Delegate --</option>
+                @foreach (var delegateItem in Model.AvailableDelegates)
+                {
+                    if (Model.DelegateId == delegateItem.Id)
+                    {
+                        <option value="@delegateItem.Id" selected>
+                            @delegateItem.FullName (@delegateItem.Email)
+                        </option>
+                    }
+                    else
+                    {
+                        <option value="@delegateItem.Id">
+                            @delegateItem.FullName (@delegateItem.Email)
+                        </option>
+                    }
+                }
+            </select>
+            <small class="form-text text-muted">
+                This will update the delegate's email to match the user's email and add the user to the Delegate role.
+            </small>
+        </div>
+        
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Link User to Delegate</button>
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </form>
+</div> 

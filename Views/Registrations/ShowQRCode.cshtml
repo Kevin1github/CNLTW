@@ -1,0 +1,69 @@
+@{
+    ViewData["Title"] = "Payment QR Code";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Payment Information</h4>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="mb-4">Amount to Pay: @ViewData["Amount"] $</h5>
+                    
+                    <div class="qr-code-container mb-4">
+                        <img src="~/images/bank-qr.jpg" 
+                             alt="Bank QR Code" 
+                             class="img-fluid" 
+                             style="max-width: 300px;" />
+                    </div>
+
+                    <div class="alert alert-info">
+                        <p class="mb-0">Registration Code: <strong>@ViewData["RegistrationCode"]</strong></p>
+                        <p class="mb-0 mt-2">Please include this code in your transfer description</p>
+                    </div>
+
+                    <div class="alert alert-primary">
+                        <h6 class="mb-2">Bank Account Information:</h6>
+                        <p class="mb-1"><strong>Bank Name:</strong> MB Bank</p>
+                        <p class="mb-1"><strong>Account Number:</strong> 0357333209</p>
+                        <p class="mb-1"><strong>Account Name:</strong> Nguyen Ba Minh Quang</p>
+                        <p class="mb-0"><strong>Branch:</strong> 41 duong Tran Duy Hung, Cau Giay, Ha Noi</p>
+                    </div>
+
+                    <div class="alert alert-warning">
+                        <p class="mb-2"><i class="bi bi-info-circle"></i> Payment Instructions:</p>
+                        <ol class="text-start mb-0">
+                            <li>Scan the QR code using your banking app</li>
+                            <li>Verify the account information and amount</li>
+                            <li>Add the Registration Code to transfer description</li>
+                            <li>Complete the transaction</li>
+                            <li>Your registration will be confirmed after payment verification</li>
+                        </ol>
+                    </div>
+
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">
+                        <i class="bi bi-house"></i> Return to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Thêm countdown để tự động chuyển về trang chủ sau 5 phút
+        $(document).ready(function() {
+            var timeLeft = 300; // 5 minutes in seconds
+            var countdownTimer = setInterval(function() {
+                timeLeft--;
+                if (timeLeft <= 0) {
+                    clearInterval(countdownTimer);
+                    window.location.href = '@Url.Action("Index", "Home")';
+                }
+            }, 1000);
+        });
+    </script>
+} 

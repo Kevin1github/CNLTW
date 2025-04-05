@@ -1,119 +1,187 @@
 ﻿@using ConferenceDelegateManagement1234122.Models
+@using ConferenceDelegateManagement1234122.Models.Enums
 @model Conference
 
 @{
     ViewData["Title"] = "Conference Details";
+    var totalRegistrations = Model.Registrations?.Count ?? 0;
+    var paidRegistrations = Model.Registrations?.Count(r => r.PaymentStatus == PaymentStatus.Paid) ?? 0;
+    var pendingRegistrations = Model.Registrations?.Count(r => r.PaymentStatus == PaymentStatus.Pending) ?? 0;
+    var cancelledOrRefunded = Model.Registrations?.Count(r => r.PaymentStatus == PaymentStatus.Cancelled || r.PaymentStatus == PaymentStatus.Refunded) ?? 0;
 }
 
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <h1>@Model.Name</h1>
-    <div>
-        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-primary">
-            <i class="bi bi-pencil"></i> Edit
-        </a>
-        <a asp-action="Index" class="btn btn-outline-secondary">
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>@Model.Name</h1>
+        <a asp-action="Index" class="btn btn-secondary">
             <i class="bi bi-arrow-left"></i> Back to List
         </a>
     </div>
-</div>
 
-<div class="row">
-    <div class="col-md-8">
-        <div class="card mb-4">
-            <div class="card-header bg-primary text-white">
-                <h5 class="mb-0">Conference Information</h5>
+    <div class="row">
+        <!-- Conference Information Column -->
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Conference Information</h5>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-3">Description:</dt>
+                        <dd class="col-sm-9">@Model.Description</dd>
+
+                        <dt class="col-sm-3">Dates:</dt>
+                        <dd class="col-sm-9">@Model.StartDate.ToShortDateString() - @Model.EndDate.ToShortDateString()</dd>
+
+                        <dt class="col-sm-3">Location:</dt>
+                        <dd class="col-sm-9">@Model.Location</dd>
+
+                        <dt class="col-sm-3">Maximum Delegates:</dt>
+                        <dd class="col-sm-9">@Model.MaximumDelegates</dd>
+
+                        <dt class="col-sm-3">Registration Deadline:</dt>
+                        <dd class="col-sm-9">
+                            @(Model.RegistrationDeadline.HasValue ? Model.RegistrationDeadline.Value.ToShortDateString() : "Not specified")
+                        </dd>
+
+                        <dt class="col-sm-3">Status:</dt>
+                        <dd class="col-sm-9">
+                            <span class="badge @(Model.IsActive ? "bg-success" : "bg-danger")">
+                                @(Model.IsActive ? "Active" : "Inactive")
+                            </span>
+                        </dd>
+
+                        <dt class="col-sm-3">Organizer Contact:</dt>
+                        <dd class="col-sm-9">
+                            Email: @Model.OrganizerEmail<br />
+                            Phone: @Model.OrganizerPhone
+                        </dd>
+                    </dl>
+                </div>
             </div>
-            <div class="card-body">
-                <div class="row mb-3">
-                    <div class="col-md-3 fw-bold">Description:</div>
-                    <div class="col-md-9">@Model.Description</div>
+        </div>
+
+        <!-- Registrations Column -->
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Registrations</h5>
                 </div>
-                <div class="row mb-3">
-                    <div class="col-md-3 fw-bold">Dates:</div>
-                    <div class="col-md-9">@Model.StartDate.ToString("MMMM d, yyyy") - @Model.EndDate.ToString("MMMM d, yyyy")</div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-3 fw-bold">Location:</div>
-                    <div class="col-md-9">@Model.Location</div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-3 fw-bold">Maximum Delegates:</div>
-                    <div class="col-md-9">
-                        @if (Model.MaximumDelegates > 0)
-                        {
-                            <span>@Model.MaximumDelegates</span>
-                        }
-                        else
-                        {
-                            <span>Unlimited</span>
-                        }
+                <div class="card-body">
+                    <div class="row g-2">
+                        <div class="col-12">
+                            <div class="card bg-light">
+                                <div class="card-body p-2 text-center">
+                                    <h4 class="mb-0">@totalRegistrations</h4>
+                                    <small>Total</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card bg-success text-white">
+                                <div class="card-body p-2 text-center">
+                                    <h4 class="mb-0">@paidRegistrations</h4>
+                                    <small>Paid</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card bg-warning">
+                                <div class="card-body p-2 text-center">
+                                    <h4 class="mb-0">@pendingRegistrations</h4>
+                                    <small>Pending</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card bg-secondary text-white">
+                                <div class="card-body p-2 text-center">
+                                    <h4 class="mb-0">@cancelledOrRefunded</h4>
+                                    <small>Cancelled</small>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-3 fw-bold">Registration Deadline:</div>
-                    <div class="col-md-9">
-                        @if (Model.RegistrationDeadline.HasValue)
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <div class="table-responsive mt-3">
+                            <table class="table table-sm table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Delegate</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var registration in Model.Registrations)
+                                    {
+                                        <tr>
+                                            <td>@registration.Delegate?.FullName</td>
+                                            <td>
+                                                <span class="badge @(registration.PaymentStatus == PaymentStatus.Paid ? "bg-success" : "bg-warning")">
+                                                    @registration.PaymentStatus
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <a asp-controller="Registrations" asp-action="Details" asp-route-id="@registration.Id" class="btn btn-sm btn-info">
+                                                    <i class="bi bi-info-circle"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+
+                    <div class="mt-3">
+                        @if (!Model.Registrations.Any(r => r.Delegate?.Email == User.Identity?.Name))
                         {
-                            <span>@Model.RegistrationDeadline.Value.ToString("MMMM d, yyyy")</span>
-                        }
-                        else
-                        {
-                            <span>Not specified</span>
-                        }
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-3 fw-bold">Status:</div>
-                    <div class="col-md-9">
-                        @if (Model.IsActive)
-                        {
-                            <span class="badge bg-success">Active</span>
-                        }
-                        else
-                        {
-                            <span class="badge bg-secondary">Inactive</span>
-                        }
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-3 fw-bold">Organizer Contact:</div>
-                    <div class="col-md-9">
-                        @if (!string.IsNullOrEmpty(Model.OrganizerEmail))
-                        {
-                            <div>Email: <a href="mailto:@Model.OrganizerEmail">@Model.OrganizerEmail</a></div>
-                        }
-                        @if (!string.IsNullOrEmpty(Model.OrganizerPhone))
-                        {
-                            <div>Phone: @Model.OrganizerPhone</div>
+                            <a asp-controller="Registrations" asp-action="Register" asp-route-conferenceId="@Model.Id" class="btn btn-primary w-100">
+                                <i class="bi bi-person-plus"></i> Register for Conference
+                            </a>
                         }
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Rest of the content (Sessions and Accommodations) -->
+    @* ... Keep the existing Sessions and RestStops sections ... *@
+</div>
 
         <!-- Sessions Section -->
-        <div class="card mb-4">
-            <div class="card-header d-flex justify-content-between align-items-center bg-primary text-white">
-                <h5 class="mb-0">Sessions</h5>
+<div class="card mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center bg-primary text-white">
+        <h5 class="mb-0">Sessions</h5>
+                @if (User.IsInRole("Admin"))
+                {
                 <a asp-controller="Sessions" asp-action="Create" asp-route-conferenceId="@Model.Id" class="btn btn-sm btn-light">
                     <i class="bi bi-plus-circle"></i> Add Session
                 </a>
-            </div>
-            <div class="card-body">
+                }
+    </div>
+    <div class="card-body">
                 @if (Model.Sessions != null && Model.Sessions.Any())
                 {
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Time</th>
-                                    <th>Room</th>
-                                    <th>Speaker</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Time</th>
+                                <th>Room</th>
+                                <th>Speaker</th>
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <th>Actions</th>
+                                    }
+                            </tr>
+                        </thead>
+                        <tbody>
                                 @foreach (var session in Model.Sessions.OrderBy(s => s.StartTime))
                                 {
                                     <tr>
@@ -123,116 +191,138 @@
                                         </td>
                                         <td>@session.Room</td>
                                         <td>@session.Speaker</td>
-                                        <td>
-                                            <div class="btn-group btn-group-sm">
-                                                <a asp-controller="Sessions" asp-action="Details" asp-route-id="@session.Id" class="btn btn-outline-primary">
-                                                    <i class="bi bi-info-circle"></i>
-                                                </a>
-                                                <a asp-controller="Sessions" asp-action="Edit" asp-route-id="@session.Id" class="btn btn-outline-primary">
-                                                    <i class="bi bi-pencil"></i>
-                                                </a>
-                                            </div>
-                                        </td>
+                                        @if (User.IsInRole("Admin"))
+                                        {
+                                                <td>
+                                                    <div class="btn-group btn-group-sm">
+                                                        <a asp-controller="Sessions" asp-action="Details" asp-route-id="@session.Id" class="btn btn-outline-primary">
+                                                            <i class="bi bi-info-circle"></i>
+                                                        </a>
+                                                        <a asp-controller="Sessions" asp-action="Edit" asp-route-id="@session.Id" class="btn btn-outline-primary">
+                                                            <i class="bi bi-pencil"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                        }
                                     </tr>
                                 }
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="mt-3">
-                        <a asp-controller="Sessions" asp-action="Index" asp-route-conferenceId="@Model.Id" class="btn btn-outline-primary">
-                            View All Sessions
-                        </a>
-                    </div>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-3">
+                    <a asp-controller="Sessions" asp-action="Index" asp-route-conferenceId="@Model.Id" class="btn btn-outline-primary">
+                        View All Sessions
+                    </a>
+                </div>
                 }
                 else
                 {
-                    <div class="alert alert-info">
-                        No sessions have been added to this conference yet.
-                    </div>
-                    <a asp-controller="Sessions" asp-action="Create" asp-route-conferenceId="@Model.Id" class="btn btn-primary">
-                        <i class="bi bi-plus-circle"></i> Add First Session
-                    </a>
-                }
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-4">
-        <!-- Registrations Summary Card -->
-        <div class="card mb-4">
-            <div class="card-header d-flex justify-content-between align-items-center bg-primary text-white">
-                <h5 class="mb-0">Registrations</h5>
-                <a asp-controller="Registrations" asp-action="Create" asp-route-conferenceId="@Model.Id" class="btn btn-sm btn-light">
-                    <i class="bi bi-plus-circle"></i> Add
-                </a>
-            </div>
-            <div class="card-body">
-                <div class="mb-3">
-                    <div class="d-flex justify-content-between">
-                        <span>Total Registrations:</span>
-                        <span class="fw-bold">@Model.Registrations.Count</span>
-                    </div>
-
-                    @if (Model.MaximumDelegates > 0)
+                <div class="alert alert-info">
+                    No sessions have been added to this conference yet.
+                </div>
+                    @if (User.IsInRole("Admin"))
                     {
-                        <div class="progress mt-2" style="height: 20px;">
-                            @{
-                                var percentage = Math.Min(100, Model.Registrations.Count * 100 / Math.Max(1, Model.MaximumDelegates));
-                                var progressClass = percentage < 70 ? "bg-success" : percentage < 90 ? "bg-warning" : "bg-danger";
-                            }
-                            <div class="progress-bar @progressClass" role="progressbar" style="width: @percentage%;"
-                                 aria-valuenow="@Model.Registrations.Count" aria-valuemin="0" aria-valuemax="@Model.MaximumDelegates">
-                                @Model.Registrations.Count / @Model.MaximumDelegates
+                        <a asp-controller="Sessions" asp-action="Create" asp-route-conferenceId="@Model.Id" class="btn btn-primary">
+                            <i class="bi bi-plus-circle"></i> Add First Session
+                        </a>
+                    }
+                }
+    </div>
+</div>
+
+        <!-- Rest Stops Section -->
+<div class="card mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center bg-primary text-white">
+        <h5 class="mb-0">Accommodation Options</h5>
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-controller="RestStop" asp-action="Create" asp-route-conferenceId="@Model.Id" class="btn btn-sm btn-light">
+                <i class="bi bi-plus-circle"></i> Add Accommodation
+            </a>
+        }
+    </div>
+    <div class="card-body">
+        @if (Model.RestStops != null && Model.RestStops.Any())
+        {
+            <div class="row">
+                @foreach (var restStop in Model.RestStops)
+                {
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">@restStop.Name</h5>
+                                <p class="card-text">
+                                    <i class="bi bi-geo-alt"></i> @restStop.Address<br />
+                                    <i class="bi bi-telephone"></i> @restStop.PhoneNumber<br />
+                                    <i class="bi bi-currency-dollar"></i> @restStop.PricePerNight.ToString("C") per night<br />
+                                    <i class="bi bi-house"></i> @restStop.AvailableRooms rooms available
+                                </p>
+                                @if (!string.IsNullOrEmpty(restStop.Description))
+                                {
+                                    <p class="card-text">@restStop.Description</p>
+                                }
+                                <div class="mt-3">
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        <a asp-controller="RestStop" asp-action="Book" asp-route-id="@restStop.Id" class="btn btn-primary">
+                                            Book Now
+                                        </a>
+                                    }
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <a asp-controller="RestStop" asp-action="Edit" asp-route-id="@restStop.Id" class="btn btn-outline-primary">
+                                            <i class="bi bi-pencil"></i> Edit
+                                        </a>
+                                        <a asp-controller="RestStop" asp-action="Details" asp-route-id="@restStop.Id" class="btn btn-outline-info">
+                                            <i class="bi bi-info-circle"></i> Details
+                                        </a>
+                                    }
+                                </div>
                             </div>
                         </div>
-                    }
-                </div>
-
-                <!-- Payment Status Summary -->
-                <div class="mb-3">
-                    <h6>Payment Status</h6>
-                    <div class="d-flex justify-content-between mb-1">
-                        <span>Paid:</span>
-                        <span>@Model.Registrations.Count(r => r.PaymentStatus == PaymentStatus.Paid)</span>
                     </div>
-                    <div class="d-flex justify-content-between mb-1">
-                        <span>Pending:</span>
-                        <span>@Model.Registrations.Count(r => r.PaymentStatus == PaymentStatus.Pending)</span>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <span>Cancelled/Refunded:</span>
-                        <span>@Model.Registrations.Count(r => r.PaymentStatus == PaymentStatus.Cancelled || r.PaymentStatus == PaymentStatus.Refunded)</span>
-                    </div>
-                </div>
-
-                <div class="mt-3">
-                    <a asp-controller="Registrations" asp-action="Index" asp-route-conferenceId="@Model.Id" class="btn btn-outline-primary w-100">
-                        Manage Registrations
-                    </a>
-                </div>
+                }
             </div>
-        </div>
+        }
+        else
+        {
+            <div class="alert alert-info">
+                No accommodation options have been added for this conference yet.
+            </div>
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-controller="RestStop" asp-action="Create" asp-route-conferenceId="@Model.Id" class="btn btn-primary">
+                    <i class="bi bi-plus-circle"></i> Add First Accommodation
+                </a>
+            }
+        }
+    </div>
+</div>
 
         <!-- Recent Delegates Card -->
-        <div class="card mb-4">
+        @if (User.IsInRole("Admin"))
+        {
+            <div class="card mb-4">
             <div class="card-header bg-primary text-white">
                 <h5 class="mb-0">Recent Registrations</h5>
             </div>
             <div class="card-body">
-                @if (Model.Registrations != null && Model.Registrations.Any())
+                @if (Model?.Registrations != null && Model.Registrations.Any())
                 {
-                    <ul class="list-group list-group-flush">
+                    <ul class="list-group">
                         @foreach (var registration in Model.Registrations.OrderByDescending(r => r.RegistrationDate).Take(5))
                         {
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <div>
-                                    <div>@registration.Delegate?.FullName</div>
+                                    <h6 class="mb-0">@registration.Delegate?.FullName</h6>
                                     <small class="text-muted">@registration.RegistrationDate.ToString("MMM d, yyyy")</small>
                                 </div>
-                                <span class="badge @(registration.PaymentStatus == PaymentStatus.Paid ? "bg-success" :
-                                                    registration.PaymentStatus == PaymentStatus.Pending ? "bg-warning" : "bg-secondary")">
-                                    @registration.PaymentStatus
-                                </span>
+                                @{
+                                    var status = registration.PaymentStatus;
+                                    var statusClass = status == PaymentStatus.Paid ? "success" :
+                                                    status == PaymentStatus.Pending ? "warning" : "danger";
+                                }
+                                <span class="badge bg-@statusClass">@status</span>
                             </li>
                         }
                     </ul>
@@ -245,28 +335,32 @@
                 }
             </div>
         </div>
+        }
 
         <!-- Actions Card -->
-        <div class="card">
-            <div class="card-header bg-primary text-white">
-                <h5 class="mb-0">Actions</h5>
-            </div>
-            <div class="card-body">
-                <div class="d-grid gap-2">
-                    <a asp-controller="Registrations" asp-action="Create" asp-route-conferenceId="@Model.Id" class="btn btn-outline-success">
-                        <i class="bi bi-person-plus"></i> Register Delegate
-                    </a>
-                    <a asp-controller="Sessions" asp-action="Create" asp-route-conferenceId="@Model.Id" class="btn btn-outline-primary">
-                        <i class="bi bi-calendar-plus"></i> Add Session
-                    </a>
-                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-warning">
-                        <i class="bi bi-pencil"></i> Edit Conference
-                    </a>
-                    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger">
-                        <i class="bi bi-trash"></i> Delete Conference
-                    </a>
+        @if (User.IsInRole("Admin"))
+        {
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Actions</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a asp-controller="Registrations" asp-action="Create" asp-route-conferenceId="@Model.Id" class="btn btn-outline-success">
+                            <i class="bi bi-person-plus"></i> Register Delegate
+                        </a>
+                        <a asp-controller="Sessions" asp-action="Create" asp-route-conferenceId="@Model.Id" class="btn btn-outline-primary">
+                            <i class="bi bi-calendar-plus"></i> Add Session
+                        </a>
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-warning">
+                            <i class="bi bi-pencil"></i> Edit Conference
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger">
+                            <i class="bi bi-trash"></i> Delete Conference
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
+        }
     </div>
 </div>

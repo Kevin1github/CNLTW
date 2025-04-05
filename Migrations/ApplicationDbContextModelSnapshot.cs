@@ -30,8 +30,16 @@ namespace ConferenceDelegateManagement1234122.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("Address")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
                     b.Property<string>("CCCD")
                         .HasColumnType("longtext");
+
+                    b.Property<string>("Company")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -49,6 +57,10 @@ namespace ConferenceDelegateManagement1234122.Migrations
 
                     b.Property<string>("FullName")
                         .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("JobTitle")
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
@@ -75,16 +87,14 @@ namespace ConferenceDelegateManagement1234122.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit(1)");
 
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
-
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("longtext");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit(1)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
@@ -161,7 +171,8 @@ namespace ConferenceDelegateManagement1234122.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("OrganizerPhone")
-                        .HasColumnType("longtext");
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
 
                     b.Property<DateTime?>("RegistrationDeadline")
                         .HasColumnType("datetime(6)");
@@ -323,6 +334,103 @@ namespace ConferenceDelegateManagement1234122.Migrations
                     b.HasIndex("DelegateId");
 
                     b.ToTable("Registrations");
+                });
+
+            modelBuilder.Entity("ConferenceDelegateManagement1234122.Models.RestStop", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<int>("AvailableRooms")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ConferenceId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<decimal>("PricePerNight")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ConferenceId");
+
+                    b.ToTable("RestStops");
+                });
+
+            modelBuilder.Entity("ConferenceDelegateManagement1234122.Models.RestStopBooking", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CheckInDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("CheckOutDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("NumberOfRooms")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PaymentStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RegistrationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RestStopId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SpecialRequests")
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RegistrationId");
+
+                    b.HasIndex("RestStopId");
+
+                    b.ToTable("RestStopBookings");
                 });
 
             modelBuilder.Entity("ConferenceDelegateManagement1234122.Models.Schedule", b =>
@@ -629,6 +737,36 @@ namespace ConferenceDelegateManagement1234122.Migrations
                     b.Navigation("Delegate");
                 });
 
+            modelBuilder.Entity("ConferenceDelegateManagement1234122.Models.RestStop", b =>
+                {
+                    b.HasOne("ConferenceDelegateManagement1234122.Models.Conference", "Conference")
+                        .WithMany("RestStops")
+                        .HasForeignKey("ConferenceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Conference");
+                });
+
+            modelBuilder.Entity("ConferenceDelegateManagement1234122.Models.RestStopBooking", b =>
+                {
+                    b.HasOne("ConferenceDelegateManagement1234122.Models.Registration", "Registration")
+                        .WithMany()
+                        .HasForeignKey("RegistrationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ConferenceDelegateManagement1234122.Models.RestStop", "RestStop")
+                        .WithMany("Bookings")
+                        .HasForeignKey("RestStopId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Registration");
+
+                    b.Navigation("RestStop");
+                });
+
             modelBuilder.Entity("ConferenceDelegateManagement1234122.Models.Schedule", b =>
                 {
                     b.HasOne("ConferenceDelegateManagement1234122.Models.ConferenceDelegate", "ConferenceDelegate")
@@ -740,6 +878,8 @@ namespace ConferenceDelegateManagement1234122.Migrations
                 {
                     b.Navigation("Registrations");
 
+                    b.Navigation("RestStops");
+
                     b.Navigation("Sessions");
                 });
 
@@ -756,6 +896,11 @@ namespace ConferenceDelegateManagement1234122.Migrations
             modelBuilder.Entity("ConferenceDelegateManagement1234122.Models.Registration", b =>
                 {
                     b.Navigation("SessionAttendances");
+                });
+
+            modelBuilder.Entity("ConferenceDelegateManagement1234122.Models.RestStop", b =>
+                {
+                    b.Navigation("Bookings");
                 });
 
             modelBuilder.Entity("ConferenceDelegateManagement1234122.Models.Schedule", b =>
