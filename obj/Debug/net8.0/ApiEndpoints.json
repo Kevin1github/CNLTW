@@ -1,1 +1,34 @@
-[]
+[
+  {
+    "ContainingType": "ConferenceDelegateManagement1234122.Controllers.ZaloPayController",
+    "Method": "Callback",
+    "RelativePath": "api/ZaloPay/callback",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "callback",
+        "Type": "ConferenceDelegateManagement1234122.Models.ZaloPayCallback",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConferenceDelegateManagement1234122.Controllers.ZaloPayController",
+    "Method": "CreatePayment",
+    "RelativePath": "api/ZaloPay/create-payment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registrationId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

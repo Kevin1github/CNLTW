@@ -35,6 +35,9 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddScoped<IDelegateService, DelegateService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IConferenceService, ConferenceService>();
+builder.Services.AddScoped<IZaloPayService, ZaloPayService>();
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 

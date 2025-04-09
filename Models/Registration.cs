@@ -24,13 +24,19 @@ namespace ConferenceDelegateManagement1234122.Models
         public DateTime RegistrationDate { get; set; } = DateTime.UtcNow;
 
         [Display(Name = "Payment Status")]
-        public PaymentStatus PaymentStatus { get; set; } = PaymentStatus.Pending;
+        public PaymentStatus PaymentStatus { get; set; }
+
+        [Display(Name = "Payment Date")]
+        public DateTime? PaymentDate { get; set; }
 
         [Display(Name = "Attendance Confirmed")]
         public bool AttendanceConfirmed { get; set; } = false;
 
         [Display(Name = "Registration Code")]
         public string RegistrationCode { get; set; } = Guid.NewGuid().ToString().Substring(0, 8).ToUpper();
+
+        [Display(Name = "Transaction Code")]
+        public string? TransactionCode { get; set; }
 
         [StringLength(500)]
         [Display(Name = "Additional Notes")]

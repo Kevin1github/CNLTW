@@ -19,59 +19,51 @@ namespace ConferenceDelegateManagement1234122.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<Conference> conferences = new List<Conference>();
-            List<Conference> upcomingConferences = new List<Conference>();
-            int totalDelegates = 0;
-
             try
             {
                 if (_context.Database.CanConnect())
                 {
                     // Lấy tất cả hội thảo và include các thông tin liên quan
-                    conferences = await _context.Conferences
+                    var conferences = await _context.Conferences
                         .Include(c => c.Sessions)
                         .Include(c => c.Registrations)
+                        .Where(c => c.IsActive)  // Chỉ lấy các hội thảo đang hoạt động
                         .AsNoTracking()
                         .ToListAsync();
 
                     // Lọc hội thảo sắp diễn ra
-                    upcomingConferences = conferences
+                    var upcomingConferences = conferences
                         .Where(c => c.StartDate >= DateTime.Today)
                         .OrderBy(c => c.StartDate)
-                        .Take(5)
                         .ToList();
 
-                    // Lấy số lượng Delegates từ bảng AspNetUsers và AspNetUserRoles
-                    var delegateRole = await _context.Roles
-                        .FirstOrDefaultAsync(r => r.Name == "Delegate");
+                    // Đếm số lượng delegates từ bảng Delegates
+                    var totalDelegates = await _context.Delegates.CountAsync();
 
-                    if (delegateRole != null)
-                    {
-                        totalDelegates = await _context.UserRoles
-                            .Where(ur => ur.RoleId == delegateRole.Id)
-                            .CountAsync();
-                    }
+                    // Đếm tổng số sessions
+                    var totalSessions = await _context.Sessions.CountAsync();
 
-                    _logger.LogInformation("Retrieved {Count} conferences, {UpcomingCount} upcoming conferences, {DelegateCount} delegates",
-                        conferences.Count, upcomingConferences.Count, totalDelegates);
+                    _logger.LogInformation($"Found {conferences.Count} conferences, {upcomingConferences.Count} upcoming, {totalDelegates} delegates, {totalSessions} sessions");
+
+                    // Trả dữ liệu vào ViewData
+                    ViewData["TotalDelegates"] = totalDelegates;
+                    ViewData["TotalConferences"] = conferences.Count;
+                    ViewData["TotalSessions"] = totalSessions;
+                    ViewData["UpcomingConferences"] = upcomingConferences;
+
+                    return View(conferences);
                 }
                 else
                 {
                     _logger.LogWarning("Database connection is unavailable.");
+                    return View(new List<Conference>());
                 }
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error retrieving data from the database: {Message}", ex.Message);
+                return View(new List<Conference>());
             }
-
-            // Trả dữ liệu vào ViewData
-            ViewData["TotalDelegates"] = totalDelegates;
-            ViewData["TotalConferences"] = conferences.Count;
-            ViewData["TotalSessions"] = conferences.Sum(c => c.Sessions?.Count ?? 0);
-            ViewData["UpcomingConferences"] = upcomingConferences;
-
-            return View(conferences);
         }
 
         public IActionResult Privacy()

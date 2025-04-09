@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ConferenceDelegateManagement1234122")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d80187ac6375b32b706db30715e5d5b76de4e00d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fd4b176a2453f92ced794708bd4e9ba88c782af6")]
 [assembly: System.Reflection.AssemblyProductAttribute("ConferenceDelegateManagement1234122")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ConferenceDelegateManagement1234122")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\controllers\\zalopaycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:controllers\\zalopaycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\services\\iconferenceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:services\\iconferenceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\services\\conferenceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:services\\conferenceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|c:\\users\\boss\\source\\repos\\conferencedelegatemanagement1234122\\views\\registrations\\showqrcode.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{61FE683A-758D-4E9F-AF77-05B8024A9AB3}|ConferenceDelegateManagement1234122.csproj|solutionrelative:views\\registrations\\showqrcode.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -162,7 +178,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 317,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -170,7 +186,56 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
+              "Title": "ZaloPayController.cs",
+              "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Controllers\\ZaloPayController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ZaloPayController.cs",
+              "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Controllers\\ZaloPayController.cs",
+              "RelativeToolTip": "Controllers\\ZaloPayController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T17:37:49.304Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IConferenceService.cs",
+              "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Services\\IConferenceService.cs",
+              "RelativeDocumentMoniker": "Services\\IConferenceService.cs",
+              "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Services\\IConferenceService.cs",
+              "RelativeToolTip": "Services\\IConferenceService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T17:32:40.268Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ConferenceService.cs",
+              "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Services\\ConferenceService.cs",
+              "RelativeDocumentMoniker": "Services\\ConferenceService.cs",
+              "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Services\\ConferenceService.cs",
+              "RelativeToolTip": "Services\\ConferenceService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAMwAQAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T17:32:13.496Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAUwBAAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-04-09T17:08:28.566Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "PaymentStatus.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\Enums\\PaymentStatus.cs",
               "RelativeDocumentMoniker": "Models\\Enums\\PaymentStatus.cs",
@@ -182,7 +247,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "PaymentMethod.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\Enums\\PaymentMethod.cs",
               "RelativeDocumentMoniker": "Models\\Enums\\PaymentMethod.cs",
@@ -194,7 +259,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "ShowQRCode.cshtml",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Registrations\\ShowQRCode.cshtml",
               "RelativeDocumentMoniker": "Views\\Registrations\\ShowQRCode.cshtml",
@@ -202,12 +267,11 @@
               "RelativeToolTip": "Views\\Registrations\\ShowQRCode.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-05T14:31:49.31Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-05T14:31:49.31Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "RestStopController.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Controllers\\RestStopController.cs",
               "RelativeDocumentMoniker": "Controllers\\RestStopController.cs",
@@ -219,7 +283,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "ProfileController.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Controllers\\ProfileController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProfileController.cs",
@@ -231,7 +295,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 24,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Registrations\\Create.cshtml",
               "RelativeDocumentMoniker": "Views\\Registrations\\Create.cshtml",
@@ -243,7 +307,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 25,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Sessions\\Details.cshtml",
               "RelativeDocumentMoniker": "Views\\Sessions\\Details.cshtml",
@@ -255,7 +319,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 26,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Registrations\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Registrations\\Index.cshtml",
@@ -267,7 +331,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 27,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Registrations\\Details.cshtml",
               "RelativeDocumentMoniker": "Views\\Registrations\\Details.cshtml",
@@ -279,7 +343,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 28,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Registrations\\Delete.cshtml",
               "RelativeDocumentMoniker": "Views\\Registrations\\Delete.cshtml",
@@ -291,7 +355,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Delegates\\Details.cshtml",
               "RelativeDocumentMoniker": "Views\\Delegates\\Details.cshtml",
@@ -303,7 +367,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 29,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\RestStop\\Delete.cshtml",
               "RelativeDocumentMoniker": "Views\\RestStop\\Delete.cshtml",
@@ -315,7 +379,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\RestStop\\Details.cshtml",
               "RelativeDocumentMoniker": "Views\\RestStop\\Details.cshtml",
@@ -327,7 +391,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 30,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
@@ -339,7 +403,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 32,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Delegates\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Delegates\\Index.cshtml",
@@ -351,7 +415,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Conferences\\Details.cshtml",
               "RelativeDocumentMoniker": "Views\\Conferences\\Details.cshtml",
@@ -363,7 +427,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 38,
               "Title": "Register.cshtml",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Registrations\\Register.cshtml",
               "RelativeDocumentMoniker": "Views\\Registrations\\Register.cshtml",
@@ -375,7 +439,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "RegisterViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\RegisterViewModel.cs",
               "RelativeDocumentMoniker": "Models\\RegisterViewModel.cs",
@@ -387,7 +451,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 31,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Conferences\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Conferences\\Index.cshtml",
@@ -399,7 +463,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "RegistrationsController.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Controllers\\RegistrationsController.cs",
               "RelativeDocumentMoniker": "Controllers\\RegistrationsController.cs",
@@ -411,7 +475,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 20,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Conferences\\Create.cshtml",
               "RelativeDocumentMoniker": "Views\\Conferences\\Create.cshtml",
@@ -423,7 +487,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 40,
               "Title": "_LoginPartial.cshtml",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Shared\\_LoginPartial.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_LoginPartial.cshtml",
@@ -435,7 +499,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 39,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
@@ -447,7 +511,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 41,
               "Title": "SessionAttendance.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\SessionAttendance.cs",
               "RelativeDocumentMoniker": "Models\\SessionAttendance.cs",
@@ -459,7 +523,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
@@ -471,7 +535,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 34,
               "Title": "DelegateService.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Services\\DelegateService.cs",
               "RelativeDocumentMoniker": "Services\\DelegateService.cs",
@@ -483,7 +547,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 33,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -495,7 +559,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 36,
               "Title": "Schedule.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\Schedule.cs",
               "RelativeDocumentMoniker": "Models\\Schedule.cs",
@@ -507,7 +571,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 22,
               "Title": "ConferenceDelegate.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\ConferenceDelegate.cs",
               "RelativeDocumentMoniker": "Models\\ConferenceDelegate.cs",
@@ -519,7 +583,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 35,
               "Title": "Session.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\Session.cs",
               "RelativeDocumentMoniker": "Models\\Session.cs",
@@ -531,7 +595,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 37,
               "Title": "Registration.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\Registration.cs",
               "RelativeDocumentMoniker": "Models\\Registration.cs",
@@ -543,7 +607,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "Delegate1.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\Delegate1.cs",
               "RelativeDocumentMoniker": "Models\\Delegate1.cs",
@@ -555,7 +619,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "Conference.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\Conference.cs",
               "RelativeDocumentMoniker": "Models\\Conference.cs",
@@ -567,7 +631,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "ApplicationUser.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Models\\ApplicationUser.cs",
               "RelativeDocumentMoniker": "Models\\ApplicationUser.cs",
@@ -579,7 +643,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 19,
               "Title": "SessionsController.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Controllers\\SessionsController.cs",
               "RelativeDocumentMoniker": "Controllers\\SessionsController.cs",
@@ -591,7 +655,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 23,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
@@ -603,7 +667,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 21,
               "Title": "DelegatesController.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Controllers\\DelegatesController.cs",
               "RelativeDocumentMoniker": "Controllers\\DelegatesController.cs",
@@ -615,7 +679,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "ConferencesController.cs",
               "DocumentMoniker": "C:\\Users\\Boss\\source\\repos\\ConferenceDelegateManagement1234122\\Controllers\\ConferencesController.cs",
               "RelativeDocumentMoniker": "Controllers\\ConferencesController.cs",

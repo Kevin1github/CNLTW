@@ -126,8 +126,65 @@ namespace ConferenceDelegateManagement1234122.Controllers
             ViewData["QRContent"] = qrContent;
             ViewData["Amount"] = registration.Conference.RegistrationFee.ToString("N0");
             ViewData["RegistrationCode"] = registration.RegistrationCode;
+            ViewData["RegistrationId"] = registrationId;
 
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ConfirmPayment(int registrationId, string transactionCode, 
+            decimal transferAmount, DateTime transferTime, string senderName)
+        {
+            if (string.IsNullOrWhiteSpace(transactionCode) || 
+                string.IsNullOrWhiteSpace(senderName) ||
+                !System.Text.RegularExpressions.Regex.IsMatch(transactionCode, "^[A-Za-z0-9]{6,20}$"))
+            {
+                TempData["ErrorMessage"] = "Please enter valid payment information.";
+                return RedirectToAction("ShowQRCode", new { registrationId });
+            }
+
+            var registration = await _context.Registrations
+                .Include(r => r.Conference)
+                .Include(r => r.Delegate)
+                .FirstOrDefaultAsync(r => r.Id == registrationId);
+
+            if (registration == null)
+            {
+                return NotFound();
+            }
+
+            // Validate transfer amount
+            if (transferAmount != registration.Conference.RegistrationFee)
+            {
+                TempData["ErrorMessage"] = "Transfer amount does not match the registration fee.";
+                return RedirectToAction("ShowQRCode", new { registrationId });
+            }
+
+            // Validate transfer time
+            if (transferTime > DateTime.Now || transferTime < DateTime.Now.AddDays(-1))
+            {
+                TempData["ErrorMessage"] = "Invalid transfer time. Transfer must be within the last 24 hours.";
+                return RedirectToAction("ShowQRCode", new { registrationId });
+            }
+
+            // Validate sender name
+            if (senderName.Length < 3 || !senderName.Any(char.IsLetter))
+            {
+                TempData["ErrorMessage"] = "Please enter a valid sender name.";
+                return RedirectToAction("ShowQRCode", new { registrationId });
+            }
+
+            // Save payment information
+            registration.PaymentStatus = PaymentStatus.Paid;
+            registration.TransactionCode = transactionCode;
+            registration.UpdatedAt = DateTime.UtcNow;
+            registration.Notes = $"Payment confirmed by {senderName} at {transferTime:yyyy-MM-dd HH:mm:ss}";
+
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "Payment confirmed successfully! Your registration is now complete.";
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Registrations
@@ -541,6 +598,42 @@ namespace ConferenceDelegateManagement1234122.Controllers
             } while (codeExists);
 
             return code;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> CheckPaymentStatus(int id)
+        {
+            var registration = await _context.Registrations
+                .FirstOrDefaultAsync(r => r.Id == id);
+
+            if (registration == null)
+            {
+                return NotFound();
+            }
+
+            return Json(new { isPaid = registration.PaymentStatus == Models.Enums.PaymentStatus.Paid });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> PaymentSuccess(int id)
+        {
+            var registration = await _context.Registrations
+                .Include(r => r.Conference)
+                .FirstOrDefaultAsync(r => r.Id == id);
+
+            if (registration == null)
+            {
+                return NotFound();
+            }
+
+            if (registration.PaymentStatus != Models.Enums.PaymentStatus.Paid)
+            {
+                return RedirectToAction(nameof(ShowQRCode), new { id });
+            }
+
+            ViewData["ConferenceName"] = registration.Conference.Name;
+            ViewData["RegistrationCode"] = registration.RegistrationCode;
+            return View();
         }
     }
 }

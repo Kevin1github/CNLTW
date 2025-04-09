@@ -10,7 +10,7 @@
                     <h4 class="mb-0">Payment Information</h4>
                 </div>
                 <div class="card-body text-center">
-                    <h5 class="mb-4">Amount to Pay: @ViewData["Amount"] $</h5>
+                    <h5 class="mb-4">Amount to Pay: @ViewData["Amount"] VND</h5>
                     
                     <div class="qr-code-container mb-4">
                         <img src="~/images/bank-qr.jpg" 
@@ -37,10 +37,16 @@
                         <ol class="text-start mb-0">
                             <li>Scan the QR code using your banking app</li>
                             <li>Verify the account information and amount</li>
-                            <li>Add the Registration Code to transfer description</li>
+                            <li>Add the Registration Code <strong>@ViewData["RegistrationCode"]</strong> to transfer description</li>
                             <li>Complete the transaction</li>
-                            <li>Your registration will be confirmed after payment verification</li>
+                            <li>Wait for confirmation (usually within 1-2 minutes)</li>
+                            <li>The page will automatically update when payment is confirmed</li>
                         </ol>
+                    </div>
+
+                    <div class="alert alert-success" id="paymentStatus" style="display: none;">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Payment confirmed! Redirecting...</span>
                     </div>
 
                     <a asp-controller="Home" asp-action="Index" class="btn btn-primary">
@@ -54,16 +60,25 @@
 
 @section Scripts {
     <script>
-        // Thêm countdown để tự động chuyển về trang chủ sau 5 phút
         $(document).ready(function() {
-            var timeLeft = 300; // 5 minutes in seconds
-            var countdownTimer = setInterval(function() {
-                timeLeft--;
-                if (timeLeft <= 0) {
-                    clearInterval(countdownTimer);
-                    window.location.href = '@Url.Action("Index", "Home")';
-                }
-            }, 1000);
+            // Check payment status every 10 seconds
+            var checkPayment = setInterval(function() {
+                $.get('@Url.Action("CheckPaymentStatus", "Registrations", new { id = ViewData["RegistrationId"] })', function(result) {
+                    if (result.isPaid) {
+                        clearInterval(checkPayment);
+                        $('#paymentStatus').show();
+                        setTimeout(function() {
+                            window.location.href = '@Url.Action("PaymentSuccess", "Registrations", new { id = ViewData["RegistrationId"] })';
+                        }, 3000);
+                    }
+                });
+            }, 10000);
+
+            // Auto redirect after 30 minutes
+            setTimeout(function() {
+                clearInterval(checkPayment);
+                window.location.href = '@Url.Action("Index", "Home")';
+            }, 1800000); // 30 minutes
         });
     </script>
 } 

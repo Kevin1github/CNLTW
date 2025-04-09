@@ -62,10 +62,21 @@
 
                     <div class="row mb-3">
                         <div class="col-md-6">
+                            <label asp-for="RegistrationFee" class="form-label"></label>
+                            <div class="input-group">
+                                <input asp-for="RegistrationFee" class="form-control" type="number" min="0" step="1000" />
+                                <span class="input-group-text">VND</span>
+                            </div>
+                            <span asp-validation-for="RegistrationFee" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
                             <label asp-for="OrganizerEmail" class="form-label"></label>
                             <input asp-for="OrganizerEmail" class="form-control" type="email" />
                             <span asp-validation-for="OrganizerEmail" class="text-danger"></span>
                         </div>
+                    </div>
+
+                    <div class="row mb-3">
                         <div class="col-md-6">
                             <label asp-for="OrganizerPhone" class="form-label"></label>
                             <input asp-for="OrganizerPhone" class="form-control" />
